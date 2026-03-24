@@ -1,7 +1,6 @@
-import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import { View, Text, TouchableOpacity, ActivityIndicator, SafeAreaView } from "react-native";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
-import { ScreenContainer } from "../../components/screen-container";
 import { usePromise } from "../../lib/promise-context";
 import { useColors } from "../../hooks/use-colors";
 import { useNotifications } from "../../hooks/use-notifications";
@@ -32,16 +31,15 @@ export default function HomeScreen() {
 
   if (isLoading) {
     return (
-      <ScreenContainer className="flex-1 justify-center items-center">
+      <View className="flex-1 justify-center items-center bg-background">
         <ActivityIndicator size="large" color={colors.primary} />
-      </ScreenContainer>
+      </View>
     );
   }
 
   return (
-    <ScreenContainer className="flex-1 px-6">
-      {/* 画面全体を中央寄せ */}
-      <View className="flex-1 justify-center items-center">
+    <SafeAreaView className="flex-1 bg-background">
+      <View className="flex-1 justify-center items-center px-6">
         {/* State: Empty */}
         {state === "empty" && (
           <TouchableOpacity
@@ -135,10 +133,10 @@ export default function HomeScreen() {
 
       {/* Error Display */}
       {error && (
-        <View className="bg-error bg-opacity-10 rounded-lg p-4 border border-error mb-6">
+        <View className="bg-error bg-opacity-10 rounded-lg p-4 border border-error m-6">
           <Text className="text-sm text-error">{error}</Text>
         </View>
       )}
-    </ScreenContainer>
+    </SafeAreaView>
   );
 }

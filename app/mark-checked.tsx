@@ -1,6 +1,5 @@
-import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import { View, Text, TouchableOpacity, ActivityIndicator, SafeAreaView } from "react-native";
 import { useRouter } from "expo-router";
-import { ScreenContainer } from "../components/screen-container";
 import { usePromise } from "../lib/promise-context";
 
 export default function MarkCheckedScreen() {
@@ -21,9 +20,8 @@ export default function MarkCheckedScreen() {
   };
 
   return (
-    <ScreenContainer className="flex-1 px-6">
-      {/* 画面全体を中央寄せ */}
-      <View className="flex-1 justify-center items-center">
+    <SafeAreaView className="flex-1 bg-background">
+      <View className="flex-1 justify-center items-center px-6">
         <View className="items-center gap-8 max-w-xs">
           {/* チェックマーク */}
           <Text className="text-6xl">✓</Text>
@@ -62,6 +60,6 @@ export default function MarkCheckedScreen() {
           </View>
         </View>
       </View>
-    </ScreenContainer>
+    </SafeAreaView>
   );
 }

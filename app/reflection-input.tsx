@@ -1,7 +1,6 @@
-import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, Platform } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, Platform, SafeAreaView } from "react-native";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { ScreenContainer } from "../components/screen-container";
 import { usePromise } from "../lib/promise-context";
 import { useColors } from "../hooks/use-colors";
 
@@ -35,9 +34,8 @@ export default function ReflectionInputScreen() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       className="flex-1"
     >
-      <ScreenContainer className="flex-1 px-6">
-        {/* 画面全体を中央寄せ */}
-        <View className="flex-1 justify-center items-center">
+      <SafeAreaView className="flex-1 bg-background">
+        <View className="flex-1 justify-center items-center px-6">
           <View className="w-full max-w-xs gap-6">
             {/* 約束表示 */}
             <View className="gap-3">
@@ -106,7 +104,7 @@ export default function ReflectionInputScreen() {
             </View>
           </View>
         </View>
-      </ScreenContainer>
+      </SafeAreaView>
     </KeyboardAvoidingView>
   );
 }
