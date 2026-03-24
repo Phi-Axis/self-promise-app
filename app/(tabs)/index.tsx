@@ -60,8 +60,8 @@ export default function HomeScreen() {
                 borderColor: "#E8D7C8",
               }}
             >
-              <Text style={{ fontSize: 18, color: colors.foreground, fontWeight: "600", letterSpacing: 0.2 }}>
-                今日の約束
+              <Text style={{ fontSize: 19, color: colors.foreground, fontWeight: "600" }}>
+                今日の約束を書く
               </Text>
             </View>
           </TouchableOpacity>
@@ -70,7 +70,7 @@ export default function HomeScreen() {
         {/* State: Active */}
         {state === "active" && (
           <View style={{ alignItems: "center", gap: 24, maxWidth: 320 }}>
-            <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
+            <Text style={{ fontSize: 24, color: colors.foreground, textAlign: "center", lineHeight: 32, fontWeight: "700", letterSpacing: 0.5 }}>
               {promise?.promiseText}
             </Text>
             
@@ -80,16 +80,17 @@ export default function HomeScreen() {
             >
               <View 
                 style={{
-                  borderRadius: 22,
-                  paddingHorizontal: 32,
-                  paddingVertical: 18,
+                  borderRadius: 20,
+                  paddingHorizontal: 26,
+                  paddingVertical: 16,
                   alignItems: "center",
-                  backgroundColor: "#B8FFB0",
+                  justifyContent: "center",
+                  backgroundColor: "#9BFFB0",
                   borderWidth: 1,
-                  borderColor: "#A8F5A0",
+                  borderColor: "#8BF5A0",
                 }}
               >
-                <Text style={{ fontSize: 17, color: "#000", fontWeight: "700", textAlign: "center", whiteSpace: "nowrap" }}>
+                <Text style={{ fontSize: 16, color: "#000", fontWeight: "600", textAlign: "center", whiteSpace: "nowrap" }}>
                   できた
                 </Text>
               </View>
