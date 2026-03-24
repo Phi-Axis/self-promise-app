@@ -1,0 +1,52 @@
+@layer base {
+  textarea,
+  input {
+    outline: none !important;
+    outline-style: none !important;
+    outline-width: 0 !important;
+    outline-color: transparent !important;
+    -webkit-appearance: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-focus-ring-color: transparent !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
+
+  textarea:focus,
+  input:focus {
+    outline: none !important;
+    outline-style: none !important;
+    outline-width: 0 !important;
+    outline-color: transparent !important;
+    -webkit-focus-ring-color: transparent !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    border-color: #D4C4B0 !important;
+  }
+
+  textarea:focus-visible,
+  input:focus-visible {
+    outline: none !important;
+    outline-style: none !important;
+    outline-width: 0 !important;
+    outline-color: transparent !important;
+    -webkit-focus-ring-color: transparent !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    border-color: #D4C4B0 !important;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -webkit-autofill（自動入力）の背景色を無効化 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: inset 0 0 0 1000px #FDF7F2 !important;
+  -webkit-text-fill-color: #11181C !important;
+  border-color: #D4C4B0 !important;
+  outline: none !important;
+}
