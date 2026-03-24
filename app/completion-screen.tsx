@@ -23,20 +23,20 @@ export default function CompletionScreen() {
           {/* 大きな円 + チェックアイコン */}
           <View
             style={{
-              width: 200,
-              height: 200,
-              borderRadius: 100,
-              backgroundColor: "#D4F0E8",
+              width: 220,
+              height: 220,
+              borderRadius: 110,
+              backgroundColor: "#DFF7EA",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <Text style={{ fontSize: 80, color: "#7ED9A3" }}>✓</Text>
+            <Text style={{ fontSize: 104, color: "#34C759", fontWeight: "700" }}>✓</Text>
           </View>
 
           {/* メッセージ */}
           <View style={{ gap: 12, alignItems: "center" }}>
-            <Text style={{ fontSize: 24, fontWeight: "bold", color: colors.foreground }}>
+            <Text style={{ fontSize: 20, fontWeight: "700", color: colors.foreground, marginTop: 16 }}>
               できた
             </Text>
           </View>

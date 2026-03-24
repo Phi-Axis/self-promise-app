@@ -234,6 +234,23 @@ export function PromiseProvider({ children }: { children: React.ReactNode }) {
         const updated = [...state.archivedPromises, updatedPromise];
         await saveArchivedPromises(updated);
         
+        // Save to localStorage with key "promises"
+        if (typeof localStorage !== 'undefined') {
+          try {
+            const existingData = localStorage.getItem('promises');
+            const promisesArray = existingData ? JSON.parse(existingData) : [];
+            promisesArray.push({
+              id: updatedPromise.id,
+              promise: updatedPromise.promiseText,
+              reflection: updatedPromise.reflectionText || '',
+              createdAt: updatedPromise.createdAt,
+            });
+            localStorage.setItem('promises', JSON.stringify(promisesArray));
+          } catch (err) {
+            console.error('Failed to save to localStorage:', err);
+          }
+        }
+        
         // Clear today's promise
         await AsyncStorage.removeItem("todayPromise");
         dispatch({ type: "RESET" });

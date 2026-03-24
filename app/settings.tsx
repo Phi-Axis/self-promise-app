@@ -19,8 +19,15 @@ export default function SettingsScreen() {
   const handleConfirmReset = async () => {
     setIsResetting(true);
     try {
+      // localStorage から "promises" キーを削除
+      if (typeof localStorage !== 'undefined') {
+        localStorage.removeItem('promises');
+      }
+      
+      // アプリのデータもリセット
       await resetAllData();
       setShowConfirm(false);
+      
       // リセット後はホームに戻す
       router.replace("/(tabs)");
     } catch (error) {
