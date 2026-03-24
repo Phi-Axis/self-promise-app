@@ -2,9 +2,6 @@
   "buildCommand": "pnpm run build:web",
   "outputDirectory": "dist/web",
   "installCommand": "pnpm install --frozen-lockfile",
-  "env": {
-    "NODE_ENV": "production"
-  },
   "headers": [
     {
       "source": "/(.*)",
@@ -36,4 +33,3 @@
     }
   ]
 }
-// Vercel cache bust: 1774358707
