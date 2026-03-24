@@ -39,10 +39,10 @@ export default function HomeScreen() {
   }
 
   return (
-    <ScreenContainer className="flex-col">
-      {/* 1要素だけ中央配置 */}
-      <View className="flex-1 justify-center items-center px-6">
-        {/* State: Empty */}
+    <ScreenContainer className="px-6 flex-col">
+      {/* メインコンテンツ */}
+      <View className="flex-1 justify-center items-center">
+        {/* State: Empty - 約束がない状態 */}
         {state === "empty" && (
           <TouchableOpacity
             onPress={handleCreatePromise}
@@ -63,16 +63,17 @@ export default function HomeScreen() {
           </TouchableOpacity>
         )}
 
-        {/* State: Active */}
+        {/* State: Active - 約束が入力済み（未完了） */}
         {state === "active" && (
-          <TouchableOpacity
-            onPress={handleMarkAsChecked}
-            activeOpacity={0.95}
-          >
-            <View className="items-center">
-              <Text className="text-lg text-foreground text-center leading-relaxed px-4 mb-6">
-                {promise?.promiseText}
-              </Text>
+          <View className="items-center gap-8">
+            <Text className="text-lg text-foreground text-center leading-relaxed px-4">
+              {promise?.promiseText}
+            </Text>
+            
+            <TouchableOpacity
+              onPress={handleMarkAsChecked}
+              activeOpacity={0.95}
+            >
               <View 
                 className="rounded-full px-8 py-3 items-center"
                 style={{
@@ -85,21 +86,23 @@ export default function HomeScreen() {
                   できた
                 </Text>
               </View>
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
         )}
 
-        {/* State: Checked */}
+        {/* State: Checked - 完了済み（感想未入力） */}
         {state === "checked" && (
-          <TouchableOpacity
-            onPress={handleAddReflection}
-            activeOpacity={0.95}
-          >
-            <View className="items-center">
-              <Text className="text-7xl mb-6">✓</Text>
-              <Text className="text-lg text-foreground text-center leading-relaxed px-4 mb-6">
-                {promise?.promiseText}
-              </Text>
+          <View className="items-center gap-8">
+            <Text className="text-7xl">✓</Text>
+            
+            <Text className="text-lg text-foreground text-center leading-relaxed px-4">
+              {promise?.promiseText}
+            </Text>
+            
+            <TouchableOpacity
+              onPress={handleAddReflection}
+              activeOpacity={0.95}
+            >
               <View 
                 className="rounded-full px-8 py-3 items-center"
                 style={{
@@ -112,16 +115,17 @@ export default function HomeScreen() {
                   感想を書く
                 </Text>
               </View>
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
         )}
 
-        {/* State: Archived */}
+        {/* State: Archived - 完了済み（感想入力済み） */}
         {state === "archived" && (
-          <View className="items-center">
-            <Text className="text-lg text-foreground text-center leading-relaxed px-4 mb-4">
+          <View className="items-center gap-6">
+            <Text className="text-lg text-foreground text-center leading-relaxed px-4">
               {promise?.promiseText}
             </Text>
+            
             <Text className="text-sm text-muted text-center leading-relaxed px-4 italic">
               {promise?.reflectionText}
             </Text>
@@ -131,7 +135,7 @@ export default function HomeScreen() {
 
       {/* Error Display */}
       {error && (
-        <View className="bg-error bg-opacity-10 rounded-lg p-4 border border-error mx-6 mb-6">
+        <View className="bg-error bg-opacity-10 rounded-lg p-4 border border-error mb-6">
           <Text className="text-sm text-error">{error}</Text>
         </View>
       )}
