@@ -36,41 +36,43 @@ export default function PromiseInputScreen() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       className="flex-1"
     >
-      <ScreenContainer className="p-6">
+      <ScreenContainer className="px-6">
         <ScrollView 
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ flexGrow: 1 }}
           keyboardShouldPersistTaps="handled"
         >
-          <View className="gap-6">
-            <View>
-              <Text className="text-3xl font-bold text-foreground mb-2">
-                小さな約束を書いてみよう
-              </Text>
-              <Text className="text-sm text-muted">
-                朝、30秒で約束を書く。例：笑顔で挨拶する、10分歩く
+          <View className="flex-1 flex-col py-8">
+            {/* 上部余白 */}
+            <View className="h-12" />
+            
+            {/* メッセージ */}
+            <View className="items-center mb-16">
+              <Text className="text-base text-muted text-center leading-relaxed">
+                小さな約束を書いてください
               </Text>
             </View>
 
-            <View className="min-h-32">
+            {/* 入力エリア */}
+            <View className="flex-1 gap-4">
               <TextInput
                 value={text}
                 onChangeText={(t) => {
                   setText(t);
                   setError("");
                 }}
-                placeholder="小さな約束を書いてください..."
+                placeholder="笑顔で挨拶する"
                 placeholderTextColor={colors.muted}
                 multiline
-                numberOfLines={4}
+                numberOfLines={6}
                 maxLength={500}
                 editable={!isLoading}
                 style={{
                   backgroundColor: colors.surface,
                   color: colors.foreground,
                   borderColor: error ? colors.error : "#E8D7C8",
-                  borderWidth: 2,
-                  borderRadius: 12,
+                  borderWidth: 1,
+                  borderRadius: 8,
                   padding: 16,
                   fontSize: 16,
                   fontFamily: "System",
@@ -78,42 +80,43 @@ export default function PromiseInputScreen() {
                   outline: "none",
                   outlineColor: "#D4C4B0",
                   outlineWidth: 0,
+                  minHeight: 120,
                 }}
               />
               {error && (
-                <Text className="text-sm text-error mt-2">{error}</Text>
+                <Text className="text-sm text-error">{error}</Text>
               )}
             </View>
 
-            {/* Spacer to push buttons below keyboard */}
-            <View className="flex-1 min-h-8" />
+            {/* 下部余白 */}
+            <View className="h-8" />
 
-            <View className="flex-row gap-3">
+            {/* ボタン */}
+            <View className="flex-row gap-3 pb-4">
               <TouchableOpacity
                 onPress={handleCancel}
                 disabled={isLoading}
-                className="flex-1 py-3 px-4 rounded-lg bg-surface border border-border items-center"
+                className="flex-1 py-3 px-4 rounded-full items-center"
+                style={{ backgroundColor: "#FFFBF7" }}
               >
-                <Text className="text-base font-semibold text-foreground">キャンセル</Text>
+                <Text className="text-base text-foreground">キャンセル</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={handleSave}
                 disabled={isLoading || !text.trim()}
+                className="flex-1 py-3 px-4 rounded-full items-center"
                 style={{
-                  flex: 1,
-                  backgroundColor: colors.primary,
-                  paddingVertical: 12,
-                  paddingHorizontal: 16,
-                  borderRadius: 8,
-                  alignItems: "center",
-                  opacity: isLoading || !text.trim() ? 0.6 : 1,
+                  backgroundColor: text.trim() ? "#F5EDE3" : "#F5EDE3",
+                  borderWidth: 1,
+                  borderColor: "#E8D7C8",
+                  opacity: isLoading || !text.trim() ? 0.5 : 1,
                 }}
               >
                 {isLoading ? (
-                  <ActivityIndicator color="white" />
+                  <ActivityIndicator color={colors.foreground} />
                 ) : (
-                  <Text className="text-base font-semibold text-white">保存</Text>
+                  <Text className="text-base text-foreground font-medium">保存</Text>
                 )}
               </TouchableOpacity>
             </View>

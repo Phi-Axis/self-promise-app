@@ -24,50 +24,60 @@ export default function MarkCheckedScreen() {
   };
 
   return (
-    <ScreenContainer className="p-6">
-      <View className="flex-1 items-center justify-center">
-        {/* カード＋ボタンのグループ */}
-        <View className="w-full max-w-sm gap-4" style={{ marginTop: -62 }}>
-          {/* カード */}
-          <View className="w-full bg-surface rounded-2xl p-8 items-center gap-6 border border-border">
-            <View className="w-full bg-background rounded-lg p-4 border border-border">
-              <Text className="text-xs text-muted mb-2">今日の約束</Text>
-              <Text className="text-base font-semibold text-foreground">
-                {promise?.promiseText}
-              </Text>
-            </View>
+    <ScreenContainer className="px-6">
+      <View className="flex-1 flex-col">
+        {/* 上部余白 */}
+        <View className="flex-1" />
+        
+        {/* チェックマーク */}
+        <View className="items-center mb-12">
+          <Text className="text-6xl mb-8">✓</Text>
+          <Text className="text-lg text-foreground text-center">
+            できました
+          </Text>
+        </View>
+        
+        {/* 約束表示 */}
+        <View className="gap-6 mb-12">
+          <View className="gap-3">
+            <Text className="text-xs text-muted tracking-wide">今日の約束</Text>
+            <Text className="text-base text-foreground leading-relaxed">
+              {promise?.promiseText}
+            </Text>
           </View>
+        </View>
+        
+        {/* 下部余白 */}
+        <View className="flex-1" />
+        
+        {/* ボタン */}
+        <View className="flex-row gap-3 pb-4">
+          <TouchableOpacity
+            onPress={handleCancel}
+            disabled={isLoading}
+            className="flex-1 py-3 px-4 rounded-full items-center"
+            style={{ backgroundColor: "#FFFBF7" }}
+          >
+            <Text className="text-base text-foreground">戻る</Text>
+          </TouchableOpacity>
 
-          {/* ボタングループ */}
-          <View className="flex-row gap-3 w-full">
-            <TouchableOpacity
-              onPress={handleCancel}
-              disabled={isLoading}
-              className="flex-1 py-3 px-4 rounded-lg bg-surface border border-border items-center"
-            >
-              <Text className="text-base font-semibold text-foreground">キャンセル</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={handleConfirm}
-              disabled={isLoading}
-              style={{
-                flex: 1,
-                backgroundColor: colors.success,
-                paddingVertical: 12,
-                paddingHorizontal: 16,
-                borderRadius: 8,
-                alignItems: "center",
-                opacity: isLoading ? 0.6 : 1,
-              }}
-            >
-              {isLoading ? (
-                <ActivityIndicator color="white" />
-              ) : (
-                <Text className="text-base font-semibold text-white">できた ✅</Text>
-              )}
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            onPress={handleConfirm}
+            disabled={isLoading}
+            className="flex-1 py-3 px-4 rounded-full items-center"
+            style={{
+              backgroundColor: "#D4E5D4",
+              borderWidth: 1,
+              borderColor: "#C0D9C0",
+              opacity: isLoading ? 0.6 : 1,
+            }}
+          >
+            {isLoading ? (
+              <ActivityIndicator color={colors.foreground} />
+            ) : (
+              <Text className="text-base text-foreground font-medium">次へ</Text>
+            )}
+          </TouchableOpacity>
         </View>
       </View>
     </ScreenContainer>
