@@ -11,7 +11,7 @@ vi.mock("@react-native-async-storage/async-storage", () => ({
 }));
 
 // Mock trpc
-vi.mock("@/lib/trpc", () => ({
+vi.mock("../lib/trpc", () => ({
   trpc: {
     promises: {
       create: {
@@ -56,7 +56,7 @@ vi.mock("@/lib/trpc", () => ({
 }));
 
 // Mock daily-cleanup
-vi.mock("@/lib/daily-cleanup", () => ({
+vi.mock("../lib/daily-cleanup", () => ({
   checkAndPerformDailyCleanup: vi.fn().mockResolvedValue(undefined),
 }));
 
