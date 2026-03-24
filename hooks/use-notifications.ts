@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from "react";
 import * as Notifications from "expo-notifications";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { trpc } from "../../lib/trpc";
+import { trpc } from "../lib/trpc";
 
 // Configure notification handler
 Notifications.setNotificationHandler({

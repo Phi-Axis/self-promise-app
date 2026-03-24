@@ -1,8 +1,8 @@
 import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import { useRouter } from "expo-router";
-import { ScreenContainer } from "../../components/screen-container";
-import { usePromise } from "../../lib/promise-context";
-import { useColors } from "../../hooks/use-colors";
+import { ScreenContainer } from "../components/screen-container";
+import { usePromise } from "../lib/promise-context";
+import { useColors } from "../hooks/use-colors";
 
 export default function MarkCheckedScreen() {
   const router = useRouter();

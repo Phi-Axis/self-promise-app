@@ -1,7 +1,7 @@
 import { View, type ViewProps, Platform } from "react-native";
 import { SafeAreaView, type Edge } from "react-native-safe-area-context";
 
-import { cn } from "../../lib/utils";
+import { cn } from "../lib/utils";
 
 export interface ScreenContainerProps extends ViewProps {
   /**

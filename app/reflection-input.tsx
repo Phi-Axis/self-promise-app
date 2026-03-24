@@ -1,9 +1,9 @@
 import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { ScreenContainer } from "../../components/screen-container";
-import { usePromise } from "../../lib/promise-context";
-import { useColors } from "../../hooks/use-colors";
+import { ScreenContainer } from "../components/screen-container";
+import { usePromise } from "../lib/promise-context";
+import { useColors } from "../hooks/use-colors";
 
 export default function ReflectionInputScreen() {
   const router = useRouter();

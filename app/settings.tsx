@@ -1,11 +1,11 @@
 import { View, Text, TouchableOpacity, Switch, ActivityIndicator, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { ScreenContainer } from "../../components/screen-container";
-import { useColors } from "../../hooks/use-colors";
-import { useSettings } from "../../hooks/use-settings";
-import { usePromise } from "../../lib/promise-context";
-import { ConfirmDialog } from "../../components/confirm-dialog";
+import { ScreenContainer } from "../components/screen-container";
+import { useColors } from "../hooks/use-colors";
+import { useSettings } from "../hooks/use-settings";
+import { usePromise } from "../lib/promise-context";
+import { ConfirmDialog } from "../components/confirm-dialog";
 
 export default function SettingsScreen() {
   const router = useRouter();
