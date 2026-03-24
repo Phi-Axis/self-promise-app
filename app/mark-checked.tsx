@@ -23,20 +23,18 @@ export default function MarkCheckedScreen() {
   };
 
   return (
-    <ScreenContainer className="px-6">
-      <View className="flex-1 flex-col justify-center items-center">
-        {/* 中央ブロック */}
+    <ScreenContainer className="px-6 flex-col">
+      {/* ヘッダー */}
+      <View className="pt-8 pb-12">
+        <Text className="text-2xl font-bold text-foreground">できた</Text>
+      </View>
+
+      {/* メインコンテンツ - 中央配置 */}
+      <View className="flex-1 justify-center items-center px-4">
         <View className="w-full max-w-sm items-center gap-12">
           {/* チェックマーク */}
           <View className="items-center">
             <Text className="text-7xl">✓</Text>
-          </View>
-          
-          {/* テキスト */}
-          <View className="items-center">
-            <Text className="text-lg text-foreground">
-              できた
-            </Text>
           </View>
           
           {/* 約束表示 */}
@@ -48,28 +46,35 @@ export default function MarkCheckedScreen() {
               {promise?.promiseText}
             </Text>
           </View>
-          
-          {/* ボタン */}
-          <View className="items-center pt-4">
-            <TouchableOpacity
-              onPress={handleConfirm}
-              disabled={isLoading}
-              className="px-10 py-4 rounded-full items-center"
-              style={{
-                backgroundColor: "#D4E5D4",
-                borderWidth: 1,
-                borderColor: "#C0D9C0",
-                opacity: isLoading ? 0.6 : 1,
-              }}
-            >
-              {isLoading ? (
-                <ActivityIndicator color={colors.foreground} />
-              ) : (
-                <Text className="text-base text-foreground font-medium">次へ</Text>
-              )}
-            </TouchableOpacity>
-          </View>
         </View>
+      </View>
+
+      {/* ボタン */}
+      <View className="flex-row gap-3 py-6">
+        <TouchableOpacity
+          onPress={handleCancel}
+          disabled={isLoading}
+          className="flex-1 py-4 px-4 rounded-full items-center"
+          style={{ backgroundColor: "#FFFBF7" }}
+        >
+          <Text className="text-base text-foreground font-semibold">戻る</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={handleConfirm}
+          disabled={isLoading}
+          className="flex-1 py-4 px-4 rounded-full items-center"
+          style={{
+            backgroundColor: "#A89968",
+            opacity: isLoading ? 0.6 : 1,
+          }}
+        >
+          {isLoading ? (
+            <ActivityIndicator color="white" />
+          ) : (
+            <Text className="text-base text-white font-semibold">次へ</Text>
+          )}
+        </TouchableOpacity>
       </View>
     </ScreenContainer>
   );

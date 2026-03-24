@@ -49,43 +49,45 @@ export default function HomeScreen() {
 
   return (
     <ScreenContainer className="px-6 flex-col">
+      {/* ヘッダー */}
+      <View className="pt-8 pb-12">
+        <Text className="text-2xl font-bold text-foreground mb-2">小さな約束</Text>
+        <Text className="text-sm text-muted">自分を信じることから始まる</Text>
+      </View>
+
       {/* メインコンテンツ - 中央配置 */}
-      <View className="flex-1 justify-center items-center">
+      <View className="flex-1 justify-center items-center px-4">
         {/* State: Empty - 約束がない状態 */}
         {state === "empty" && (
-          <View className="items-center gap-8">
-            {/* メッセージ */}
-            <Text className="text-base text-muted text-center">
-              自分を信じることから始まる
-            </Text>
-            
-            {/* ボタン */}
-            <TouchableOpacity
-              onPress={handleCreatePromise}
-              activeOpacity={0.7}
+          <TouchableOpacity
+            onPress={handleCreatePromise}
+            activeOpacity={0.95}
+            className="w-full"
+          >
+            <View 
+              className="rounded-3xl p-8 items-center gap-3"
+              style={{
+                backgroundColor: "#F5EDE3",
+                borderWidth: 1,
+                borderColor: "#E8D7C8",
+              }}
             >
-              <View 
-                className="px-10 py-4 rounded-full items-center"
-                style={{
-                  backgroundColor: "#F5EDE3",
-                  borderWidth: 1,
-                  borderColor: "#E8D7C8",
-                }}
-              >
-                <Text className="text-base text-foreground font-medium">
-                  今日の約束を書く
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+              <Text className="text-lg font-semibold text-foreground text-center">
+                今日の約束を書いてみよう
+              </Text>
+              <Text className="text-xs text-muted text-center">
+                小さな約束から始まる。30秒以内で大丈夫です。
+              </Text>
+            </View>
+          </TouchableOpacity>
         )}
 
         {/* State: Active - 約束が入力済み（未完了） */}
         {state === "active" && (
-          <View className="w-full max-w-sm items-center gap-12">
+          <View className="w-full max-w-sm gap-12">
             {/* 約束表示 */}
-            <View className="w-full gap-4">
-              <Text className="text-xs text-muted tracking-widest uppercase text-center">
+            <View className="gap-3">
+              <Text className="text-xs text-muted tracking-widest uppercase">
                 今日の約束
               </Text>
               <Text className="text-lg text-foreground text-center leading-relaxed">
@@ -94,32 +96,34 @@ export default function HomeScreen() {
             </View>
             
             {/* ボタン */}
-            <TouchableOpacity
-              onPress={handleMarkAsChecked}
-              activeOpacity={0.7}
-            >
-              <View 
-                className="px-10 py-4 rounded-full items-center"
-                style={{
-                  backgroundColor: "#D4E5D4",
-                  borderWidth: 1,
-                  borderColor: "#C0D9C0",
-                }}
+            <View className="items-center">
+              <TouchableOpacity
+                onPress={handleMarkAsChecked}
+                activeOpacity={0.95}
               >
-                <Text className="text-base text-foreground font-medium">
-                  できた
-                </Text>
-              </View>
-            </TouchableOpacity>
+                <View 
+                  className="px-12 py-4 rounded-full items-center"
+                  style={{
+                    backgroundColor: "#D4E5D4",
+                    borderWidth: 1,
+                    borderColor: "#C0D9C0",
+                  }}
+                >
+                  <Text className="text-base text-foreground font-semibold">
+                    できた
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
         )}
 
         {/* State: Checked - 完了済み（感想未入力） */}
         {state === "checked" && (
-          <View className="w-full max-w-sm items-center gap-12">
+          <View className="w-full max-w-sm gap-12">
             {/* 約束表示 */}
-            <View className="w-full gap-4">
-              <Text className="text-xs text-muted tracking-widest uppercase text-center">
+            <View className="gap-3">
+              <Text className="text-xs text-muted tracking-widest uppercase">
                 完了しました
               </Text>
               <Text className="text-lg text-foreground text-center leading-relaxed">
@@ -128,32 +132,34 @@ export default function HomeScreen() {
             </View>
             
             {/* ボタン */}
-            <TouchableOpacity
-              onPress={handleAddReflection}
-              activeOpacity={0.7}
-            >
-              <View 
-                className="px-10 py-4 rounded-full items-center"
-                style={{
-                  backgroundColor: "#F5EDE3",
-                  borderWidth: 1,
-                  borderColor: "#E8D7C8",
-                }}
+            <View className="items-center">
+              <TouchableOpacity
+                onPress={handleAddReflection}
+                activeOpacity={0.95}
               >
-                <Text className="text-base text-foreground font-medium">
-                  感想を書く
-                </Text>
-              </View>
-            </TouchableOpacity>
+                <View 
+                  className="px-12 py-4 rounded-full items-center"
+                  style={{
+                    backgroundColor: "#F5EDE3",
+                    borderWidth: 1,
+                    borderColor: "#E8D7C8",
+                  }}
+                >
+                  <Text className="text-base text-foreground font-semibold">
+                    感想を書く
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
         )}
 
         {/* State: Archived - 完了済み（感想入力済み） */}
         {state === "archived" && (
-          <View className="w-full max-w-sm items-center gap-8">
+          <View className="w-full max-w-sm gap-8">
             {/* 約束表示 */}
-            <View className="w-full gap-4">
-              <Text className="text-xs text-muted tracking-widest uppercase text-center">
+            <View className="gap-3">
+              <Text className="text-xs text-muted tracking-widest uppercase">
                 完了した約束
               </Text>
               <Text className="text-lg text-foreground text-center leading-relaxed">
@@ -162,8 +168,8 @@ export default function HomeScreen() {
             </View>
             
             {/* 感想表示 */}
-            <View className="w-full gap-4">
-              <Text className="text-xs text-muted tracking-widest uppercase text-center">
+            <View className="gap-3">
+              <Text className="text-xs text-muted tracking-widest uppercase">
                 感想
               </Text>
               <Text className="text-base text-foreground text-center leading-relaxed italic">
@@ -181,7 +187,7 @@ export default function HomeScreen() {
         </View>
       )}
 
-      {/* Bottom Navigation - 固定 */}
+      {/* Bottom Navigation */}
       <View className="flex-row gap-3 py-6 border-t border-border">
         <TouchableOpacity
           onPress={handleViewArchived}

@@ -35,88 +35,98 @@ export default function ReflectionInputScreen() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       className="flex-1"
     >
-      <ScreenContainer className="px-6">
+      <ScreenContainer className="px-6 flex-col">
+        {/* ヘッダー */}
+        <View className="pt-8 pb-12">
+          <Text className="text-2xl font-bold text-foreground mb-2">
+            感想を書いてみよう
+          </Text>
+          <Text className="text-sm text-muted">
+            夜に、短くても大丈夫。「できた」「気持ちよかった」「○」など
+          </Text>
+        </View>
+
+        {/* メインコンテンツ */}
         <ScrollView 
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ flexGrow: 1 }}
           keyboardShouldPersistTaps="handled"
         >
-          <View className="flex-1 flex-col justify-center items-center py-12">
-            {/* 中央ブロック */}
-            <View className="w-full max-w-sm gap-8">
-              {/* メッセージ */}
-              <View className="items-center">
-                <Text className="text-base text-muted text-center">
-                  短くても大丈夫です
-                </Text>
-              </View>
-
-              {/* 約束表示 */}
+          <View className="flex-1 justify-center px-4">
+            {/* 約束表示 */}
+            <View className="gap-6 mb-8">
               <View className="gap-3">
-                <Text className="text-xs text-muted tracking-widest uppercase text-center">
+                <Text className="text-xs text-muted tracking-widest uppercase">
                   実行した約束
                 </Text>
                 <Text className="text-base text-foreground text-center leading-relaxed">
                   {promise?.promiseText}
                 </Text>
               </View>
+            </View>
 
-              {/* 入力エリア */}
-              <View className="gap-3">
-                <TextInput
-                  value={text}
-                  onChangeText={(t) => {
-                    setText(t);
-                    setError("");
-                  }}
-                  placeholder="○"
-                  placeholderTextColor={colors.muted}
-                  multiline
-                  numberOfLines={5}
-                  maxLength={500}
-                  editable={!isLoading}
-                  style={{
-                    backgroundColor: colors.surface,
-                    color: colors.foreground,
-                    borderColor: error ? colors.error : "#E8D7C8",
-                    borderWidth: 1,
-                    borderRadius: 8,
-                    padding: 16,
-                    fontSize: 16,
-                    fontFamily: "System",
-                    textAlignVertical: "top",
-                    outline: "none",
-                    minHeight: 100,
-                  }}
-                />
-                {error && (
-                  <Text className="text-sm text-error text-center">{error}</Text>
-                )}
-              </View>
-
-              {/* ボタン */}
-              <View className="items-center pt-4">
-                <TouchableOpacity
-                  onPress={handleSave}
-                  disabled={isLoading || !text.trim()}
-                  className="px-10 py-4 rounded-full items-center"
-                  style={{
-                    backgroundColor: text.trim() ? "#F5EDE3" : "#F5EDE3",
-                    borderWidth: 1,
-                    borderColor: "#E8D7C8",
-                    opacity: isLoading || !text.trim() ? 0.5 : 1,
-                  }}
-                >
-                  {isLoading ? (
-                    <ActivityIndicator color={colors.foreground} />
-                  ) : (
-                    <Text className="text-base text-foreground font-medium">保存</Text>
-                  )}
-                </TouchableOpacity>
-              </View>
+            {/* 入力エリア */}
+            <View className="gap-6">
+              <TextInput
+                value={text}
+                onChangeText={(t) => {
+                  setText(t);
+                  setError("");
+                }}
+                placeholder="感想を書いてください..."
+                placeholderTextColor={colors.muted}
+                multiline
+                numberOfLines={5}
+                maxLength={500}
+                editable={!isLoading}
+                style={{
+                  backgroundColor: colors.surface,
+                  color: colors.foreground,
+                  borderColor: error ? colors.error : "#E8D7C8",
+                  borderWidth: 1,
+                  borderRadius: 16,
+                  padding: 16,
+                  fontSize: 16,
+                  fontFamily: "System",
+                  textAlignVertical: "top",
+                  outline: "none",
+                  minHeight: 120,
+                }}
+              />
+              {error && (
+                <Text className="text-sm text-error text-center">{error}</Text>
+              )}
             </View>
           </View>
         </ScrollView>
+
+        {/* ボタン */}
+        <View className="flex-row gap-3 py-6">
+          <TouchableOpacity
+            onPress={handleCancel}
+            disabled={isLoading}
+            className="flex-1 py-4 px-4 rounded-full items-center"
+            style={{ backgroundColor: "#FFFBF7" }}
+          >
+            <Text className="text-base text-foreground font-semibold">キャンセル</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={handleSave}
+            disabled={isLoading || !text.trim()}
+            className="flex-1 py-4 px-4 rounded-full items-center"
+            style={{
+              backgroundColor: text.trim() ? "#A89968" : "#A89968",
+              opacity: isLoading || !text.trim() ? 0.5 : 1,
+            }}
+          >
+            {isLoading ? (
+              <ActivityIndicator color="white" />
+            ) : (
+              <Text className="text-base text-white font-semibold">保存</Text>
+            )}
+          </TouchableOpacity>
+        </View>
       </ScreenContainer>
     </KeyboardAvoidingView>
   );
