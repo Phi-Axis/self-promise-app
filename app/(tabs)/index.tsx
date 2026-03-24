@@ -32,20 +32,17 @@ export default function HomeScreen() {
 
   if (isLoading) {
     return (
-      <ScreenContainer className="flex items-center justify-center">
+      <ScreenContainer className="flex-1 justify-center items-center">
         <ActivityIndicator size="large" color={colors.primary} />
       </ScreenContainer>
     );
   }
 
   return (
-    <ScreenContainer className="px-6 flex-col">
-      {/* 上部余白 */}
-      <View className="flex-1" />
-      
-      {/* メインコンテンツ */}
-      <View className="items-center pb-20">
-        {/* State: Empty - 約束がない状態 */}
+    <ScreenContainer className="flex-1 px-6">
+      {/* 画面全体を中央寄せ */}
+      <View className="flex-1 justify-center items-center">
+        {/* State: Empty */}
         {state === "empty" && (
           <TouchableOpacity
             onPress={handleCreatePromise}
@@ -66,10 +63,10 @@ export default function HomeScreen() {
           </TouchableOpacity>
         )}
 
-        {/* State: Active - 約束が入力済み（未完了） */}
+        {/* State: Active */}
         {state === "active" && (
-          <View className="items-center gap-6">
-            <Text className="text-base text-foreground text-center leading-relaxed px-4">
+          <View className="items-center gap-6 max-w-xs">
+            <Text className="text-base text-foreground text-center leading-relaxed">
               {promise?.promiseText}
             </Text>
             
@@ -93,12 +90,12 @@ export default function HomeScreen() {
           </View>
         )}
 
-        {/* State: Checked - 完了済み（感想未入力） */}
+        {/* State: Checked */}
         {state === "checked" && (
-          <View className="items-center gap-6">
+          <View className="items-center gap-6 max-w-xs">
             <Text className="text-6xl">✓</Text>
             
-            <Text className="text-base text-foreground text-center leading-relaxed px-4">
+            <Text className="text-base text-foreground text-center leading-relaxed">
               {promise?.promiseText}
             </Text>
             
@@ -122,22 +119,19 @@ export default function HomeScreen() {
           </View>
         )}
 
-        {/* State: Archived - 完了済み（感想入力済み） */}
+        {/* State: Archived */}
         {state === "archived" && (
-          <View className="items-center gap-4">
-            <Text className="text-base text-foreground text-center leading-relaxed px-4">
+          <View className="items-center gap-4 max-w-xs">
+            <Text className="text-base text-foreground text-center leading-relaxed">
               {promise?.promiseText}
             </Text>
             
-            <Text className="text-xs text-muted text-center leading-relaxed px-4 italic">
+            <Text className="text-xs text-muted text-center leading-relaxed italic">
               {promise?.reflectionText}
             </Text>
           </View>
         )}
       </View>
-      
-      {/* 下部余白 */}
-      <View className="flex-1" />
 
       {/* Error Display */}
       {error && (

@@ -20,8 +20,8 @@ export default function CompletionScreen() {
   }, [router]);
 
   return (
-    <ScreenContainer className="flex items-center justify-center">
-      <View className="gap-6 items-center" style={{ marginTop: -60 }}>
+    <ScreenContainer className="flex-1 justify-center items-center">
+      <View className="gap-6 items-center">
         {/* チェックマーク */}
         <View className="w-32 h-32 items-center justify-center">
           <Svg width={128} height={128} viewBox="0 0 128 128">
@@ -41,7 +41,7 @@ export default function CompletionScreen() {
 
         {/* メッセージ */}
         <View className="gap-3 items-center">
-          <Text className="text-3xl font-bold text-foreground">
+          <Text className="text-2xl font-bold text-foreground">
             できた
           </Text>
         </View>
