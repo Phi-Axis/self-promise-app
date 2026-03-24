@@ -49,34 +49,24 @@ export default function HomeScreen() {
 
   return (
     <ScreenContainer className="px-6 flex-col">
-      {/* ヘッダー */}
-      <View className="pt-8 pb-12">
-        <Text className="text-2xl font-bold text-foreground mb-2">小さな約束</Text>
-        <Text className="text-sm text-muted">自分を信じることから始まる</Text>
-      </View>
-
       {/* メインコンテンツ - 中央配置 */}
-      <View className="flex-1 justify-center items-center px-4">
+      <View className="flex-1 justify-center items-center">
         {/* State: Empty - 約束がない状態 */}
         {state === "empty" && (
           <TouchableOpacity
             onPress={handleCreatePromise}
             activeOpacity={0.95}
-            className="w-full"
           >
             <View 
-              className="rounded-3xl p-8 items-center gap-3"
+              className="rounded-3xl px-8 py-6 items-center"
               style={{
                 backgroundColor: "#F5EDE3",
                 borderWidth: 1,
                 borderColor: "#E8D7C8",
               }}
             >
-              <Text className="text-lg font-semibold text-foreground text-center">
-                今日の約束を書いてみよう
-              </Text>
-              <Text className="text-xs text-muted text-center">
-                小さな約束から始まる。30秒以内で大丈夫です。
+              <Text className="text-base text-foreground">
+                今日の約束を書く
               </Text>
             </View>
           </TouchableOpacity>
@@ -84,98 +74,70 @@ export default function HomeScreen() {
 
         {/* State: Active - 約束が入力済み（未完了） */}
         {state === "active" && (
-          <View className="w-full max-w-sm gap-12">
-            {/* 約束表示 */}
-            <View className="gap-3">
-              <Text className="text-xs text-muted tracking-widest uppercase">
-                今日の約束
-              </Text>
-              <Text className="text-lg text-foreground text-center leading-relaxed">
-                {promise?.promiseText}
-              </Text>
-            </View>
+          <View className="items-center gap-8">
+            <Text className="text-lg text-foreground text-center leading-relaxed px-4">
+              {promise?.promiseText}
+            </Text>
             
-            {/* ボタン */}
-            <View className="items-center">
-              <TouchableOpacity
-                onPress={handleMarkAsChecked}
-                activeOpacity={0.95}
+            <TouchableOpacity
+              onPress={handleMarkAsChecked}
+              activeOpacity={0.95}
+            >
+              <View 
+                className="rounded-full px-8 py-3 items-center"
+                style={{
+                  backgroundColor: "#D4E5D4",
+                  borderWidth: 1,
+                  borderColor: "#C0D9C0",
+                }}
               >
-                <View 
-                  className="px-12 py-4 rounded-full items-center"
-                  style={{
-                    backgroundColor: "#D4E5D4",
-                    borderWidth: 1,
-                    borderColor: "#C0D9C0",
-                  }}
-                >
-                  <Text className="text-base text-foreground font-semibold">
-                    できた
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            </View>
+                <Text className="text-sm text-foreground">
+                  できた
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
         )}
 
         {/* State: Checked - 完了済み（感想未入力） */}
         {state === "checked" && (
-          <View className="w-full max-w-sm gap-12">
-            {/* 約束表示 */}
-            <View className="gap-3">
-              <Text className="text-xs text-muted tracking-widest uppercase">
-                完了しました
-              </Text>
-              <Text className="text-lg text-foreground text-center leading-relaxed">
-                {promise?.promiseText}
-              </Text>
-            </View>
+          <View className="items-center gap-8">
+            <Text className="text-7xl">✓</Text>
             
-            {/* ボタン */}
-            <View className="items-center">
-              <TouchableOpacity
-                onPress={handleAddReflection}
-                activeOpacity={0.95}
+            <Text className="text-lg text-foreground text-center leading-relaxed px-4">
+              {promise?.promiseText}
+            </Text>
+            
+            <TouchableOpacity
+              onPress={handleAddReflection}
+              activeOpacity={0.95}
+            >
+              <View 
+                className="rounded-full px-8 py-3 items-center"
+                style={{
+                  backgroundColor: "#F5EDE3",
+                  borderWidth: 1,
+                  borderColor: "#E8D7C8",
+                }}
               >
-                <View 
-                  className="px-12 py-4 rounded-full items-center"
-                  style={{
-                    backgroundColor: "#F5EDE3",
-                    borderWidth: 1,
-                    borderColor: "#E8D7C8",
-                  }}
-                >
-                  <Text className="text-base text-foreground font-semibold">
-                    感想を書く
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            </View>
+                <Text className="text-sm text-foreground">
+                  感想を書く
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
         )}
 
         {/* State: Archived - 完了済み（感想入力済み） */}
         {state === "archived" && (
-          <View className="w-full max-w-sm gap-8">
-            {/* 約束表示 */}
-            <View className="gap-3">
-              <Text className="text-xs text-muted tracking-widest uppercase">
-                完了した約束
-              </Text>
-              <Text className="text-lg text-foreground text-center leading-relaxed">
-                {promise?.promiseText}
-              </Text>
-            </View>
+          <View className="items-center gap-6">
+            <Text className="text-lg text-foreground text-center leading-relaxed px-4">
+              {promise?.promiseText}
+            </Text>
             
-            {/* 感想表示 */}
-            <View className="gap-3">
-              <Text className="text-xs text-muted tracking-widest uppercase">
-                感想
-              </Text>
-              <Text className="text-base text-foreground text-center leading-relaxed italic">
-                {promise?.reflectionText}
-              </Text>
-            </View>
+            <Text className="text-sm text-muted text-center leading-relaxed px-4 italic">
+              {promise?.reflectionText}
+            </Text>
           </View>
         )}
       </View>
@@ -188,20 +150,20 @@ export default function HomeScreen() {
       )}
 
       {/* Bottom Navigation */}
-      <View className="flex-row gap-3 py-6 border-t border-border">
+      <View className="flex-row gap-2 py-4 border-t border-border">
         <TouchableOpacity
           onPress={handleViewArchived}
-          className="flex-1 py-3 px-4 rounded-full items-center"
+          className="flex-1 py-2 px-3 rounded-full items-center"
           style={{ backgroundColor: "#FFFBF7" }}
         >
-          <Text className="text-sm text-foreground">完了フォルダ</Text>
+          <Text className="text-xs text-foreground">完了</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={handleSettings}
-          className="flex-1 py-3 px-4 rounded-full items-center"
+          className="flex-1 py-2 px-3 rounded-full items-center"
           style={{ backgroundColor: "#FFFBF7" }}
         >
-          <Text className="text-sm text-foreground">設定</Text>
+          <Text className="text-xs text-foreground">設定</Text>
         </TouchableOpacity>
       </View>
     </ScreenContainer>

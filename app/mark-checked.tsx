@@ -24,55 +24,43 @@ export default function MarkCheckedScreen() {
 
   return (
     <ScreenContainer className="px-6 flex-col">
-      {/* ヘッダー */}
-      <View className="pt-8 pb-12">
-        <Text className="text-2xl font-bold text-foreground">できた</Text>
-      </View>
-
       {/* メインコンテンツ - 中央配置 */}
-      <View className="flex-1 justify-center items-center px-4">
-        <View className="w-full max-w-sm items-center gap-12">
+      <View className="flex-1 justify-center items-center">
+        <View className="items-center gap-8">
           {/* チェックマーク */}
-          <View className="items-center">
-            <Text className="text-7xl">✓</Text>
-          </View>
+          <Text className="text-7xl">✓</Text>
           
           {/* 約束表示 */}
-          <View className="w-full gap-3">
-            <Text className="text-xs text-muted tracking-widest uppercase text-center">
-              今日の約束
-            </Text>
-            <Text className="text-base text-foreground text-center leading-relaxed">
-              {promise?.promiseText}
-            </Text>
-          </View>
+          <Text className="text-lg text-foreground text-center leading-relaxed px-4">
+            {promise?.promiseText}
+          </Text>
         </View>
       </View>
 
       {/* ボタン */}
-      <View className="flex-row gap-3 py-6">
+      <View className="flex-row gap-3 py-4">
         <TouchableOpacity
           onPress={handleCancel}
           disabled={isLoading}
-          className="flex-1 py-4 px-4 rounded-full items-center"
+          className="flex-1 py-3 px-4 rounded-full items-center"
           style={{ backgroundColor: "#FFFBF7" }}
         >
-          <Text className="text-base text-foreground font-semibold">戻る</Text>
+          <Text className="text-sm text-foreground">戻る</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           onPress={handleConfirm}
           disabled={isLoading}
-          className="flex-1 py-4 px-4 rounded-full items-center"
+          className="flex-1 py-3 px-4 rounded-full items-center"
           style={{
             backgroundColor: "#A89968",
             opacity: isLoading ? 0.6 : 1,
           }}
         >
           {isLoading ? (
-            <ActivityIndicator color="white" />
+            <ActivityIndicator color="white" size="small" />
           ) : (
-            <Text className="text-base text-white font-semibold">次へ</Text>
+            <Text className="text-sm text-white">次へ</Text>
           )}
         </TouchableOpacity>
       </View>
