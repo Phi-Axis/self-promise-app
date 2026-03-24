@@ -25,9 +25,6 @@ export default function MarkCheckedScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
         <View style={{ alignItems: "center", gap: 32, maxWidth: 320 }}>
-          {/* チェックマーク */}
-          <Text style={{ fontSize: 48 }}>✓</Text>
-          
           {/* 約束表示 */}
           <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
             {promise?.promiseText}
@@ -48,18 +45,18 @@ export default function MarkCheckedScreen() {
               disabled={isLoading}
               style={{
                 flex: 1,
-                paddingVertical: 12,
-                paddingHorizontal: 20,
+                paddingVertical: 14,
+                paddingHorizontal: 24,
                 borderRadius: 20,
                 alignItems: "center",
-                backgroundColor: "#A8D5BA",
+                backgroundColor: "#7ED9A3",
                 opacity: isLoading ? 0.6 : 1,
               }}
             >
               {isLoading ? (
                 <ActivityIndicator color="white" size="small" />
               ) : (
-                <Text style={{ fontSize: 16, color: colors.foreground, fontWeight: "600" }}>できた ✓</Text>
+                <Text style={{ fontSize: 16, color: colors.foreground, fontWeight: "600" }}>できた</Text>
               )}
             </TouchableOpacity>
           </View>

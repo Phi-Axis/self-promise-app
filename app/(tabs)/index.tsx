@@ -50,9 +50,11 @@ export default function HomeScreen() {
             <View 
               style={{
                 borderRadius: 24,
-                paddingHorizontal: 48,
-                paddingVertical: 20,
+                paddingHorizontal: 24,
+                paddingVertical: 24,
+                minHeight: 120,
                 alignItems: "center",
+                justifyContent: "center",
                 backgroundColor: "#F5EDE3",
                 borderWidth: 1,
                 borderColor: "#E8D7C8",
@@ -78,17 +80,17 @@ export default function HomeScreen() {
             >
               <View 
                 style={{
-                  borderRadius: 24,
-                  paddingHorizontal: 20,
-                  paddingVertical: 12,
+                  borderRadius: 20,
+                  paddingHorizontal: 24,
+                  paddingVertical: 14,
                   alignItems: "center",
-                  backgroundColor: "#A8D5BA",
+                  backgroundColor: "#7ED9A3",
                   borderWidth: 1,
-                  borderColor: "#9ACAA9",
+                  borderColor: "#6ACF95",
                 }}
               >
                 <Text style={{ fontSize: 16, color: colors.foreground, fontWeight: "600" }}>
-                  できた ✓
+                  できた
                 </Text>
               </View>
             </TouchableOpacity>

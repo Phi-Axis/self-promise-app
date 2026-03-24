@@ -79,7 +79,7 @@ export default function RootLayout() {
     // theme-color メタタグを追加
     const themeColor = document.createElement("meta");
     themeColor.name = "theme-color";
-    themeColor.content = "#0a7ea4";
+    themeColor.content = "#F5EDE3";
     document.head.appendChild(themeColor);
 
     // apple-mobile-web-app-capable を追加
@@ -158,6 +158,7 @@ export default function RootLayout() {
               <Stack.Screen name="reflection-input" />
               <Stack.Screen name="completion-screen" />
               <Stack.Screen name="archived-folder" />
+              <Stack.Screen name="history" />
               <Stack.Screen name="settings" />
             </Stack>
             <StatusBar style="auto" />

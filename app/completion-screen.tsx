@@ -1,8 +1,6 @@
 import { View, Text, SafeAreaView } from "react-native";
 import { useEffect } from "react";
 import { useRouter } from "expo-router";
-
-
 import { useColors } from "../hooks/use-colors";
 
 export default function CompletionScreen() {
@@ -22,6 +20,20 @@ export default function CompletionScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <View style={{ gap: 24, alignItems: "center" }}>
+          {/* 大きな円 + チェックアイコン */}
+          <View
+            style={{
+              width: 200,
+              height: 200,
+              borderRadius: 100,
+              backgroundColor: "#D4F0E8",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ fontSize: 80, color: "#7ED9A3" }}>✓</Text>
+          </View>
+
           {/* メッセージ */}
           <View style={{ gap: 12, alignItems: "center" }}>
             <Text style={{ fontSize: 24, fontWeight: "bold", color: colors.foreground }}>
