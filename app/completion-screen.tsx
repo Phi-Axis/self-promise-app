@@ -19,11 +19,11 @@ export default function CompletionScreen() {
   }, [router]);
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
-      <View className="flex-1 justify-center items-center">
-        <View className="gap-6 items-center">
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <View style={{ gap: 24, alignItems: "center" }}>
           {/* チェックマーク */}
-          <View className="w-32 h-32 items-center justify-center">
+          <View style={{ width: 128, height: 128, alignItems: "center", justifyContent: "center" }}>
             <Svg width={128} height={128} viewBox="0 0 128 128">
               {/* 円形背景 */}
               <Circle cx="64" cy="64" r="60" fill={colors.success} opacity={0.15} />
@@ -40,8 +40,8 @@ export default function CompletionScreen() {
           </View>
 
           {/* メッセージ */}
-          <View className="gap-3 items-center">
-            <Text className="text-2xl font-bold text-foreground">
+          <View style={{ gap: 12, alignItems: "center" }}>
+            <Text style={{ fontSize: 24, fontWeight: "bold", color: colors.foreground }}>
               できた
             </Text>
           </View>

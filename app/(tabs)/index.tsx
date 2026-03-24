@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ActivityIndicator, SafeAreaView } from "react-native";
+import { View, Text, TouchableOpacity, ActivityIndicator, SafeAreaView, Platform } from "react-native";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
 import { usePromise } from "../../lib/promise-context";
@@ -31,15 +31,15 @@ export default function HomeScreen() {
 
   if (isLoading) {
     return (
-      <View className="flex-1 justify-center items-center bg-background">
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: colors.background }}>
         <ActivityIndicator size="large" color={colors.primary} />
       </View>
     );
   }
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
-      <View className="flex-1 justify-center items-center px-6">
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
         {/* State: Empty */}
         {state === "empty" && (
           <TouchableOpacity
@@ -47,14 +47,17 @@ export default function HomeScreen() {
             activeOpacity={0.95}
           >
             <View 
-              className="rounded-3xl px-8 py-6 items-center"
               style={{
+                borderRadius: 24,
+                paddingHorizontal: 32,
+                paddingVertical: 24,
+                alignItems: "center",
                 backgroundColor: "#F5EDE3",
                 borderWidth: 1,
                 borderColor: "#E8D7C8",
               }}
             >
-              <Text className="text-base text-foreground">
+              <Text style={{ fontSize: 16, color: colors.foreground }}>
                 今日の約束を書く
               </Text>
             </View>
@@ -63,8 +66,8 @@ export default function HomeScreen() {
 
         {/* State: Active */}
         {state === "active" && (
-          <View className="items-center gap-6 max-w-xs">
-            <Text className="text-base text-foreground text-center leading-relaxed">
+          <View style={{ alignItems: "center", gap: 24, maxWidth: 320 }}>
+            <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
               {promise?.promiseText}
             </Text>
             
@@ -73,14 +76,17 @@ export default function HomeScreen() {
               activeOpacity={0.95}
             >
               <View 
-                className="rounded-full px-6 py-2 items-center"
                 style={{
+                  borderRadius: 20,
+                  paddingHorizontal: 24,
+                  paddingVertical: 8,
+                  alignItems: "center",
                   backgroundColor: "#D4E5D4",
                   borderWidth: 1,
                   borderColor: "#C0D9C0",
                 }}
               >
-                <Text className="text-xs text-foreground">
+                <Text style={{ fontSize: 12, color: colors.foreground }}>
                   できた
                 </Text>
               </View>
@@ -90,10 +96,10 @@ export default function HomeScreen() {
 
         {/* State: Checked */}
         {state === "checked" && (
-          <View className="items-center gap-6 max-w-xs">
-            <Text className="text-6xl">✓</Text>
+          <View style={{ alignItems: "center", gap: 24, maxWidth: 320 }}>
+            <Text style={{ fontSize: 48 }}>✓</Text>
             
-            <Text className="text-base text-foreground text-center leading-relaxed">
+            <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
               {promise?.promiseText}
             </Text>
             
@@ -102,14 +108,17 @@ export default function HomeScreen() {
               activeOpacity={0.95}
             >
               <View 
-                className="rounded-full px-6 py-2 items-center"
                 style={{
+                  borderRadius: 20,
+                  paddingHorizontal: 24,
+                  paddingVertical: 8,
+                  alignItems: "center",
                   backgroundColor: "#F5EDE3",
                   borderWidth: 1,
                   borderColor: "#E8D7C8",
                 }}
               >
-                <Text className="text-xs text-foreground">
+                <Text style={{ fontSize: 12, color: colors.foreground }}>
                   感想を書く
                 </Text>
               </View>
@@ -119,12 +128,12 @@ export default function HomeScreen() {
 
         {/* State: Archived */}
         {state === "archived" && (
-          <View className="items-center gap-4 max-w-xs">
-            <Text className="text-base text-foreground text-center leading-relaxed">
+          <View style={{ alignItems: "center", gap: 16, maxWidth: 320 }}>
+            <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
               {promise?.promiseText}
             </Text>
             
-            <Text className="text-xs text-muted text-center leading-relaxed italic">
+            <Text style={{ fontSize: 12, color: colors.muted, textAlign: "center", lineHeight: 18, fontStyle: "italic" }}>
               {promise?.reflectionText}
             </Text>
           </View>
@@ -133,8 +142,8 @@ export default function HomeScreen() {
 
       {/* Error Display */}
       {error && (
-        <View className="bg-error bg-opacity-10 rounded-lg p-4 border border-error m-6">
-          <Text className="text-sm text-error">{error}</Text>
+        <View style={{ backgroundColor: colors.error, opacity: 0.1, borderRadius: 8, padding: 16, borderWidth: 1, borderColor: colors.error, margin: 24 }}>
+          <Text style={{ fontSize: 14, color: colors.error }}>{error}</Text>
         </View>
       )}
     </SafeAreaView>

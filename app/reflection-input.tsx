@@ -32,14 +32,14 @@ export default function ReflectionInputScreen() {
   return (
     <KeyboardAvoidingView 
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      className="flex-1"
+      style={{ flex: 1 }}
     >
-      <SafeAreaView className="flex-1 bg-background">
-        <View className="flex-1 justify-center items-center px-6">
-          <View className="w-full max-w-xs gap-6">
+      <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
+          <View style={{ width: "100%", maxWidth: 320, gap: 24 }}>
             {/* 約束表示 */}
-            <View className="gap-3">
-              <Text className="text-base text-foreground text-center leading-relaxed">
+            <View style={{ gap: 12 }}>
+              <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
                 {promise?.promiseText}
               </Text>
             </View>
@@ -72,25 +72,28 @@ export default function ReflectionInputScreen() {
               }}
             />
             {error && (
-              <Text className="text-sm text-error text-center">{error}</Text>
+              <Text style={{ fontSize: 14, color: colors.error, textAlign: "center" }}>{error}</Text>
             )}
 
             {/* ボタン */}
-            <View className="flex-row gap-3">
+            <View style={{ flexDirection: "row", gap: 12 }}>
               <TouchableOpacity
                 onPress={handleCancel}
                 disabled={isLoading}
-                className="flex-1 py-3 px-4 rounded-full items-center"
-                style={{ backgroundColor: "#FFFBF7" }}
+                style={{ flex: 1, paddingVertical: 12, paddingHorizontal: 16, borderRadius: 20, alignItems: "center", backgroundColor: "#FFFBF7" }}
               >
-                <Text className="text-sm text-foreground">キャンセル</Text>
+                <Text style={{ fontSize: 14, color: colors.foreground }}>キャンセル</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={handleSave}
                 disabled={isLoading || !text.trim()}
-                className="flex-1 py-3 px-4 rounded-full items-center"
                 style={{
+                  flex: 1,
+                  paddingVertical: 12,
+                  paddingHorizontal: 16,
+                  borderRadius: 20,
+                  alignItems: "center",
                   backgroundColor: text.trim() ? "#A89968" : "#A89968",
                   opacity: isLoading || !text.trim() ? 0.5 : 1,
                 }}
@@ -98,7 +101,7 @@ export default function ReflectionInputScreen() {
                 {isLoading ? (
                   <ActivityIndicator color="white" size="small" />
                 ) : (
-                  <Text className="text-sm text-white">保存</Text>
+                  <Text style={{ fontSize: 14, color: "white" }}>保存</Text>
                 )}
               </TouchableOpacity>
             </View>

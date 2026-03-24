@@ -1,9 +1,11 @@
 import { View, Text, TouchableOpacity, ActivityIndicator, SafeAreaView } from "react-native";
 import { useRouter } from "expo-router";
 import { usePromise } from "../lib/promise-context";
+import { useColors } from "../hooks/use-colors";
 
 export default function MarkCheckedScreen() {
   const router = useRouter();
+  const colors = useColors();
   const { promise, markAsChecked, isLoading } = usePromise();
 
   const handleConfirm = async () => {
@@ -20,33 +22,36 @@ export default function MarkCheckedScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
-      <View className="flex-1 justify-center items-center px-6">
-        <View className="items-center gap-8 max-w-xs">
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
+        <View style={{ alignItems: "center", gap: 32, maxWidth: 320 }}>
           {/* チェックマーク */}
-          <Text className="text-6xl">✓</Text>
+          <Text style={{ fontSize: 48 }}>✓</Text>
           
           {/* 約束表示 */}
-          <Text className="text-base text-foreground text-center leading-relaxed">
+          <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
             {promise?.promiseText}
           </Text>
 
           {/* ボタン */}
-          <View className="flex-row gap-3 w-full">
+          <View style={{ flexDirection: "row", gap: 12, width: "100%" }}>
             <TouchableOpacity
               onPress={handleCancel}
               disabled={isLoading}
-              className="flex-1 py-3 px-4 rounded-full items-center"
-              style={{ backgroundColor: "#FFFBF7" }}
+              style={{ flex: 1, paddingVertical: 12, paddingHorizontal: 16, borderRadius: 20, alignItems: "center", backgroundColor: "#FFFBF7" }}
             >
-              <Text className="text-sm text-foreground">戻る</Text>
+              <Text style={{ fontSize: 14, color: colors.foreground }}>戻る</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={handleConfirm}
               disabled={isLoading}
-              className="flex-1 py-3 px-4 rounded-full items-center"
               style={{
+                flex: 1,
+                paddingVertical: 12,
+                paddingHorizontal: 16,
+                borderRadius: 20,
+                alignItems: "center",
                 backgroundColor: "#A89968",
                 opacity: isLoading ? 0.6 : 1,
               }}
@@ -54,7 +59,7 @@ export default function MarkCheckedScreen() {
               {isLoading ? (
                 <ActivityIndicator color="white" size="small" />
               ) : (
-                <Text className="text-sm text-white">次へ</Text>
+                <Text style={{ fontSize: 14, color: "white" }}>次へ</Text>
               )}
             </TouchableOpacity>
           </View>
