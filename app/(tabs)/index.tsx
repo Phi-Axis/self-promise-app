@@ -60,7 +60,7 @@ export default function HomeScreen() {
                 borderColor: "#E8D7C8",
               }}
             >
-              <Text style={{ fontSize: 19, color: "#3A3A3A", fontWeight: "600" }}>
+              <Text style={{ fontSize: 19, color: "#3A3A3A", fontWeight: "700" }}>
                 今日の約束を書く
               </Text>
             </View>

@@ -36,7 +36,7 @@ export default function CompletionScreen() {
 
           {/* メッセージ */}
           <View style={{ gap: 12, alignItems: "center" }}>
-            <Text style={{ fontSize: 37, fontWeight: "700", color: "#333333", marginTop: 8 }}>
+            <Text style={{ fontSize: 37, fontWeight: "700", color: "#3A3A3A", marginTop: 8 }}>
               できた
             </Text>
           </View>
