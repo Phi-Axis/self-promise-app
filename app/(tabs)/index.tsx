@@ -51,8 +51,8 @@ export default function HomeScreen() {
               style={{
                 borderRadius: 24,
                 paddingHorizontal: 24,
-                paddingVertical: 24,
-                minHeight: 120,
+                paddingVertical: 28,
+                minHeight: 140,
                 alignItems: "center",
                 justifyContent: "center",
                 backgroundColor: "#F5EDE3",
@@ -60,8 +60,8 @@ export default function HomeScreen() {
                 borderColor: "#E8D7C8",
               }}
             >
-              <Text style={{ fontSize: 20, color: colors.foreground, fontWeight: "700", letterSpacing: 0.5 }}>
-                今日の約束を書く
+              <Text style={{ fontSize: 18, color: colors.foreground, fontWeight: "600", letterSpacing: 0.2 }}>
+                今日の約束
               </Text>
             </View>
           </TouchableOpacity>
@@ -80,16 +80,16 @@ export default function HomeScreen() {
             >
               <View 
                 style={{
-                  borderRadius: 20,
-                  paddingHorizontal: 28,
-                  paddingVertical: 16,
+                  borderRadius: 22,
+                  paddingHorizontal: 32,
+                  paddingVertical: 18,
                   alignItems: "center",
-                  backgroundColor: "#A8F0C6",
+                  backgroundColor: "#B8FFB0",
                   borderWidth: 1,
-                  borderColor: "#94E8B5",
+                  borderColor: "#A8F5A0",
                 }}
               >
-                <Text style={{ fontSize: 16, color: "#000", fontWeight: "600", textAlign: "center", whiteSpace: "nowrap" }}>
+                <Text style={{ fontSize: 17, color: "#000", fontWeight: "700", textAlign: "center", whiteSpace: "nowrap" }}>
                   できた
                 </Text>
               </View>
