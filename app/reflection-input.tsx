@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, Platform } from "react-native";
+import { View, TextInput, KeyboardAvoidingView, Platform } from "react-native";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { ScreenContainer } from "../components/screen-container";
@@ -8,26 +8,18 @@ import { useColors } from "../hooks/use-colors";
 export default function ReflectionInputScreen() {
   const router = useRouter();
   const colors = useColors();
-  const { promise, addReflection, isLoading } = usePromise();
+  const { addReflection } = usePromise();
   const [text, setText] = useState("");
-  const [error, setError] = useState("");
 
-  const handleSave = async () => {
-    if (!text.trim()) {
-      setError("感想を入力してください");
-      return;
-    }
+  const handleSubmit = async () => {
+    if (!text.trim()) return;
 
     try {
       await addReflection(text.trim());
       router.push("/completion-screen");
     } catch (err) {
-      setError("保存に失敗しました");
+      console.error("Failed to add reflection:", err);
     }
-  };
-
-  const handleCancel = () => {
-    router.back();
   };
 
   return (
@@ -35,34 +27,24 @@ export default function ReflectionInputScreen() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       className="flex-1"
     >
-      <ScreenContainer className="px-6 flex-col">
-        {/* メインコンテンツ - 中央配置 */}
-        <View className="flex-1 justify-center items-center">
-          <View className="w-full max-w-xs gap-6">
-            {/* 約束表示 */}
-            <View className="gap-3">
-              <Text className="text-base text-foreground text-center leading-relaxed">
-                {promise?.promiseText}
-              </Text>
-            </View>
-
-            {/* 入力エリア */}
+      <ScreenContainer className="flex-col">
+        {/* 入力欄のみ中央配置 */}
+        <View className="flex-1 justify-center items-center px-6">
+          <View className="w-full max-w-xs">
             <TextInput
               value={text}
-              onChangeText={(t) => {
-                setText(t);
-                setError("");
-              }}
+              onChangeText={setText}
               placeholder="感想を書いてください"
               placeholderTextColor={colors.muted}
               multiline
               numberOfLines={5}
               maxLength={500}
-              editable={!isLoading}
+              onSubmitEditing={handleSubmit}
+              returnKeyType="done"
               style={{
                 backgroundColor: colors.surface,
                 color: colors.foreground,
-                borderColor: error ? colors.error : "#E8D7C8",
+                borderColor: "#E8D7C8",
                 borderWidth: 1,
                 borderRadius: 16,
                 padding: 16,
@@ -73,37 +55,6 @@ export default function ReflectionInputScreen() {
                 minHeight: 110,
               }}
             />
-            {error && (
-              <Text className="text-sm text-error text-center">{error}</Text>
-            )}
-
-            {/* ボタン */}
-            <View className="flex-row gap-3">
-              <TouchableOpacity
-                onPress={handleCancel}
-                disabled={isLoading}
-                className="flex-1 py-3 px-4 rounded-full items-center"
-                style={{ backgroundColor: "#FFFBF7" }}
-              >
-                <Text className="text-sm text-foreground">キャンセル</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={handleSave}
-                disabled={isLoading || !text.trim()}
-                className="flex-1 py-3 px-4 rounded-full items-center"
-                style={{
-                  backgroundColor: text.trim() ? "#A89968" : "#A89968",
-                  opacity: isLoading || !text.trim() ? 0.5 : 1,
-                }}
-              >
-                {isLoading ? (
-                  <ActivityIndicator color="white" size="small" />
-                ) : (
-                  <Text className="text-sm text-white">保存</Text>
-                )}
-              </TouchableOpacity>
-            </View>
           </View>
         </View>
       </ScreenContainer>
