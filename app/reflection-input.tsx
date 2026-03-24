@@ -36,7 +36,7 @@ export default function ReflectionInputScreen() {
     >
       <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
-          <View style={{ width: "100%", maxWidth: 320, gap: 24 }}>
+          <View style={{ width: "100%", maxWidth: 320, gap: 16 }}>
             {/* 約束表示 */}
             <View style={{ gap: 12 }}>
               <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
@@ -54,7 +54,7 @@ export default function ReflectionInputScreen() {
               placeholder="感想を書いてください"
               placeholderTextColor={colors.muted}
               multiline
-              numberOfLines={5}
+              numberOfLines={4}
               maxLength={500}
               editable={!isLoading}
               style={{
@@ -68,7 +68,7 @@ export default function ReflectionInputScreen() {
                 fontFamily: "System",
                 textAlignVertical: "top",
                 outline: "none",
-                minHeight: 110,
+                minHeight: 80,
               }}
             />
             {error && (

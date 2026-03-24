@@ -56,7 +56,7 @@ const config: ExpoConfig = {
   },
   android: {
     adaptiveIcon: {
-      backgroundColor: "#E6F4FE",
+      backgroundColor: "#F5EDE3",
       foregroundImage: "./assets/images/android-icon-foreground.png",
       backgroundImage: "./assets/images/android-icon-background.png",
       monochromeImage: "./assets/images/android-icon-monochrome.png",
@@ -91,7 +91,7 @@ const config: ExpoConfig = {
     orientation: "portrait-primary",
     display: "standalone",
     backgroundColor: "#ffffff",
-    themeColor: "#0a7ea4",
+    themeColor: "#F5EDE3",
     barStyle: "black-translucent",
   },
   plugins: [

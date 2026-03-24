@@ -36,7 +36,7 @@ export default function PromiseInputScreen() {
     >
       <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
-          <View style={{ width: "100%", maxWidth: 320, gap: 24 }}>
+          <View style={{ width: "100%", maxWidth: 320, gap: 16 }}>
             {/* 入力エリア */}
             <TextInput
               value={text}
@@ -47,7 +47,7 @@ export default function PromiseInputScreen() {
               placeholder="小さな約束を書いてください"
               placeholderTextColor={colors.muted}
               multiline
-              numberOfLines={6}
+              numberOfLines={5}
               maxLength={500}
               editable={!isLoading}
               style={{
@@ -61,7 +61,7 @@ export default function PromiseInputScreen() {
                 fontFamily: "System",
                 textAlignVertical: "top",
                 outline: "none",
-                minHeight: 140,
+                minHeight: 100,
               }}
             />
             {error && (
