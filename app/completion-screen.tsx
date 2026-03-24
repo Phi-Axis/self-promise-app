@@ -19,7 +19,7 @@ export default function CompletionScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <View style={{ gap: 24, alignItems: "center" }}>
+        <View style={{ gap: 20, alignItems: "center" }}>
           {/* 大きな円 + チェックアイコン */}
           <View
             style={{
@@ -36,7 +36,7 @@ export default function CompletionScreen() {
 
           {/* メッセージ */}
           <View style={{ gap: 12, alignItems: "center" }}>
-            <Text style={{ fontSize: 24, fontWeight: "700", color: colors.foreground, marginTop: 16 }}>
+            <Text style={{ fontSize: 32, fontWeight: "700", color: colors.foreground, marginTop: 8 }}>
               できた
             </Text>
           </View>
