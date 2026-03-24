@@ -85,9 +85,9 @@ export default function HomeScreen() {
                   paddingVertical: 16,
                   alignItems: "center",
                   justifyContent: "center",
-                  backgroundColor: "#7ED957",
+                  backgroundColor: "#34C759",
                   borderWidth: 1,
-                  borderColor: "#6FD36B",
+                  borderColor: "#2BA84B",
                 }}
               >
                 <Text style={{ fontSize: 16, color: "#fff", fontWeight: "600", textAlign: "center", whiteSpace: "nowrap" }}>

@@ -50,7 +50,7 @@ export default function MarkCheckedScreen() {
                 borderRadius: 20,
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "#7ED957",
+                backgroundColor: "#34C759",
                 opacity: isLoading ? 0.6 : 1,
               }}
             >
