@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useRouter } from "expo-router";
 import Svg, { Circle, Path } from "react-native-svg";
 
-import { ScreenContainer } from "@/components/screen-container";
-import { useColors } from "@/hooks/use-colors";
+import { ScreenContainer } from "../../components/screen-container";
+import { useColors } from "../../hooks/use-colors";
 
 export default function CompletionScreen() {
   const router = useRouter();

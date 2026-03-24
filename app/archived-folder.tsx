@@ -1,9 +1,9 @@
 import { View, Text, FlatList, TouchableOpacity, ActivityIndicator } from "react-native";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { ScreenContainer } from "@/components/screen-container";
-import { usePromise } from "@/lib/promise-context";
-import { useColors } from "@/hooks/use-colors";
+import { ScreenContainer } from "../../components/screen-container";
+import { usePromise } from "../../lib/promise-context";
+import { useColors } from "../../hooks/use-colors";
 
 export default function ArchivedFolderScreen() {
   const router = useRouter();

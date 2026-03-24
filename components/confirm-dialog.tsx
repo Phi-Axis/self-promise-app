@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { View, Text, TouchableOpacity, Modal, Platform } from 'react-native';
-import { useColors } from '@/hooks/use-colors';
+import { useColors } from '../hooks/use-colors';
 
 interface ConfirmDialogProps {
   visible: boolean;
