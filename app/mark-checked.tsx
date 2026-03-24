@@ -59,7 +59,7 @@ export default function MarkCheckedScreen() {
               {isLoading ? (
                 <ActivityIndicator color="white" size="small" />
               ) : (
-                <Text style={{ fontSize: 14, color: "white" }}>次へ</Text>
+                <Text style={{ fontSize: 14, color: "white" }}>できた✅</Text>
               )}
             </TouchableOpacity>
           </View>

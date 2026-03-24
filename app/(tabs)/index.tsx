@@ -49,15 +49,15 @@ export default function HomeScreen() {
             <View 
               style={{
                 borderRadius: 24,
-                paddingHorizontal: 32,
-                paddingVertical: 24,
+                paddingHorizontal: 48,
+                paddingVertical: 32,
                 alignItems: "center",
                 backgroundColor: "#F5EDE3",
                 borderWidth: 1,
                 borderColor: "#E8D7C8",
               }}
             >
-              <Text style={{ fontSize: 16, color: colors.foreground }}>
+              <Text style={{ fontSize: 18, color: colors.foreground, fontWeight: "500" }}>
                 今日の約束を書く
               </Text>
             </View>
