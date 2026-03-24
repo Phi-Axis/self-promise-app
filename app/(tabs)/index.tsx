@@ -40,8 +40,11 @@ export default function HomeScreen() {
 
   return (
     <ScreenContainer className="px-6 flex-col">
+      {/* 上部余白 */}
+      <View className="flex-1" />
+      
       {/* メインコンテンツ */}
-      <View className="flex-1 justify-center items-center">
+      <View className="items-center pb-20">
         {/* State: Empty - 約束がない状態 */}
         {state === "empty" && (
           <TouchableOpacity
@@ -65,8 +68,8 @@ export default function HomeScreen() {
 
         {/* State: Active - 約束が入力済み（未完了） */}
         {state === "active" && (
-          <View className="items-center gap-8">
-            <Text className="text-lg text-foreground text-center leading-relaxed px-4">
+          <View className="items-center gap-6">
+            <Text className="text-base text-foreground text-center leading-relaxed px-4">
               {promise?.promiseText}
             </Text>
             
@@ -75,14 +78,14 @@ export default function HomeScreen() {
               activeOpacity={0.95}
             >
               <View 
-                className="rounded-full px-8 py-3 items-center"
+                className="rounded-full px-6 py-2 items-center"
                 style={{
                   backgroundColor: "#D4E5D4",
                   borderWidth: 1,
                   borderColor: "#C0D9C0",
                 }}
               >
-                <Text className="text-sm text-foreground">
+                <Text className="text-xs text-foreground">
                   できた
                 </Text>
               </View>
@@ -92,10 +95,10 @@ export default function HomeScreen() {
 
         {/* State: Checked - 完了済み（感想未入力） */}
         {state === "checked" && (
-          <View className="items-center gap-8">
-            <Text className="text-7xl">✓</Text>
+          <View className="items-center gap-6">
+            <Text className="text-6xl">✓</Text>
             
-            <Text className="text-lg text-foreground text-center leading-relaxed px-4">
+            <Text className="text-base text-foreground text-center leading-relaxed px-4">
               {promise?.promiseText}
             </Text>
             
@@ -104,14 +107,14 @@ export default function HomeScreen() {
               activeOpacity={0.95}
             >
               <View 
-                className="rounded-full px-8 py-3 items-center"
+                className="rounded-full px-6 py-2 items-center"
                 style={{
                   backgroundColor: "#F5EDE3",
                   borderWidth: 1,
                   borderColor: "#E8D7C8",
                 }}
               >
-                <Text className="text-sm text-foreground">
+                <Text className="text-xs text-foreground">
                   感想を書く
                 </Text>
               </View>
@@ -121,17 +124,20 @@ export default function HomeScreen() {
 
         {/* State: Archived - 完了済み（感想入力済み） */}
         {state === "archived" && (
-          <View className="items-center gap-6">
-            <Text className="text-lg text-foreground text-center leading-relaxed px-4">
+          <View className="items-center gap-4">
+            <Text className="text-base text-foreground text-center leading-relaxed px-4">
               {promise?.promiseText}
             </Text>
             
-            <Text className="text-sm text-muted text-center leading-relaxed px-4 italic">
+            <Text className="text-xs text-muted text-center leading-relaxed px-4 italic">
               {promise?.reflectionText}
             </Text>
           </View>
         )}
       </View>
+      
+      {/* 下部余白 */}
+      <View className="flex-1" />
 
       {/* Error Display */}
       {error && (
