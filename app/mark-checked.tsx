@@ -46,11 +46,11 @@ export default function MarkCheckedScreen() {
               style={{
                 flex: 1,
                 paddingVertical: 16,
-                paddingHorizontal: 32,
+                paddingHorizontal: 48,
                 borderRadius: 20,
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "#A8E6A3",
+                backgroundColor: "#7ED957",
                 opacity: isLoading ? 0.6 : 1,
               }}
             >

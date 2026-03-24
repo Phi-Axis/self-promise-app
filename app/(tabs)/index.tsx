@@ -60,7 +60,7 @@ export default function HomeScreen() {
                 borderColor: "#E8D7C8",
               }}
             >
-              <Text style={{ fontSize: 19, color: "#222222", fontWeight: "600" }}>
+              <Text style={{ fontSize: 19, color: "#3A3A3A", fontWeight: "600" }}>
                 今日の約束を書く
               </Text>
             </View>
@@ -81,13 +81,13 @@ export default function HomeScreen() {
               <View 
                 style={{
                   borderRadius: 20,
-                  paddingHorizontal: 32,
+                  paddingHorizontal: 48,
                   paddingVertical: 16,
                   alignItems: "center",
                   justifyContent: "center",
-                  backgroundColor: "#A8E6A3",
+                  backgroundColor: "#7ED957",
                   borderWidth: 1,
-                  borderColor: "#98D893",
+                  borderColor: "#6FD36B",
                 }}
               >
                 <Text style={{ fontSize: 16, color: "#fff", fontWeight: "600", textAlign: "center", whiteSpace: "nowrap" }}>
