@@ -1,4 +1,4 @@
-const { themeColors } = require("./theme.config.js");
+const { themeColors } = require("./theme.config");
 const plugin = require("tailwindcss/plugin");
 
 const tailwindColors = Object.fromEntries(
