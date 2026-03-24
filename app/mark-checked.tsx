@@ -49,17 +49,17 @@ export default function MarkCheckedScreen() {
               style={{
                 flex: 1,
                 paddingVertical: 12,
-                paddingHorizontal: 16,
+                paddingHorizontal: 20,
                 borderRadius: 20,
                 alignItems: "center",
-                backgroundColor: "#A89968",
+                backgroundColor: "#A8D5BA",
                 opacity: isLoading ? 0.6 : 1,
               }}
             >
               {isLoading ? (
                 <ActivityIndicator color="white" size="small" />
               ) : (
-                <Text style={{ fontSize: 14, color: "white" }}>できた</Text>
+                <Text style={{ fontSize: 16, color: colors.foreground, fontWeight: "600" }}>できた ✓</Text>
               )}
             </TouchableOpacity>
           </View>

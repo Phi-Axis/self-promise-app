@@ -45,19 +45,20 @@ export default function HomeScreen() {
           <TouchableOpacity
             onPress={handleCreatePromise}
             activeOpacity={0.95}
+            style={{ width: "85%" }}
           >
             <View 
               style={{
                 borderRadius: 24,
                 paddingHorizontal: 48,
-                paddingVertical: 32,
+                paddingVertical: 20,
                 alignItems: "center",
                 backgroundColor: "#F5EDE3",
                 borderWidth: 1,
                 borderColor: "#E8D7C8",
               }}
             >
-              <Text style={{ fontSize: 18, color: colors.foreground, fontWeight: "500" }}>
+              <Text style={{ fontSize: 18, color: colors.foreground, fontWeight: "600" }}>
                 今日の約束を書く
               </Text>
             </View>
@@ -77,17 +78,17 @@ export default function HomeScreen() {
             >
               <View 
                 style={{
-                  borderRadius: 20,
-                  paddingHorizontal: 24,
-                  paddingVertical: 8,
+                  borderRadius: 24,
+                  paddingHorizontal: 20,
+                  paddingVertical: 12,
                   alignItems: "center",
-                  backgroundColor: "#D4E5D4",
+                  backgroundColor: "#A8D5BA",
                   borderWidth: 1,
-                  borderColor: "#C0D9C0",
+                  borderColor: "#9ACAA9",
                 }}
               >
-                <Text style={{ fontSize: 12, color: colors.foreground }}>
-                  できた
+                <Text style={{ fontSize: 16, color: colors.foreground, fontWeight: "600" }}>
+                  できた ✓
                 </Text>
               </View>
             </TouchableOpacity>
@@ -97,8 +98,6 @@ export default function HomeScreen() {
         {/* State: Checked */}
         {state === "checked" && (
           <View style={{ alignItems: "center", gap: 24, maxWidth: 320 }}>
-            <Text style={{ fontSize: 48 }}>✓</Text>
-            
             <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
               {promise?.promiseText}
             </Text>
