@@ -30,15 +30,6 @@ export default function HomeScreen() {
     router.push("/reflection-input" as const);
   };
 
-  const handleViewArchived = () => {
-    router.push("/archived-folder");
-  };
-
-  const handleSettings = () => {
-    router.push("/settings");
-    setTimeout(() => scheduleNotification(), 500);
-  };
-
   if (isLoading) {
     return (
       <ScreenContainer className="flex items-center justify-center">
@@ -49,7 +40,7 @@ export default function HomeScreen() {
 
   return (
     <ScreenContainer className="px-6 flex-col">
-      {/* メインコンテンツ - 中央配置 */}
+      {/* メインコンテンツ - 真の中央配置 */}
       <View className="flex-1 justify-center items-center">
         {/* State: Empty - 約束がない状態 */}
         {state === "empty" && (
@@ -148,24 +139,6 @@ export default function HomeScreen() {
           <Text className="text-sm text-error">{error}</Text>
         </View>
       )}
-
-      {/* Bottom Navigation */}
-      <View className="flex-row gap-2 py-4 border-t border-border">
-        <TouchableOpacity
-          onPress={handleViewArchived}
-          className="flex-1 py-2 px-3 rounded-full items-center"
-          style={{ backgroundColor: "#FFFBF7" }}
-        >
-          <Text className="text-xs text-foreground">完了</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleSettings}
-          className="flex-1 py-2 px-3 rounded-full items-center"
-          style={{ backgroundColor: "#FFFBF7" }}
-        >
-          <Text className="text-xs text-foreground">設定</Text>
-        </TouchableOpacity>
-      </View>
     </ScreenContainer>
   );
 }

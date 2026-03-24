@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, Platform } from "react-native";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { ScreenContainer } from "../components/screen-container";
@@ -36,15 +36,11 @@ export default function ReflectionInputScreen() {
       className="flex-1"
     >
       <ScreenContainer className="px-6 flex-col">
-        {/* メインコンテンツ */}
-        <ScrollView 
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ flexGrow: 1 }}
-          keyboardShouldPersistTaps="handled"
-        >
-          <View className="flex-1 justify-center px-4">
+        {/* メインコンテンツ - 中央配置 */}
+        <View className="flex-1 justify-center items-center">
+          <View className="w-full max-w-xs gap-6">
             {/* 約束表示 */}
-            <View className="gap-6 mb-8">
+            <View className="gap-3">
               <Text className="text-base text-foreground text-center leading-relaxed">
                 {promise?.promiseText}
               </Text>
@@ -74,41 +70,41 @@ export default function ReflectionInputScreen() {
                 fontFamily: "System",
                 textAlignVertical: "top",
                 outline: "none",
-                minHeight: 120,
+                minHeight: 110,
               }}
             />
             {error && (
-              <Text className="text-sm text-error text-center mt-4">{error}</Text>
+              <Text className="text-sm text-error text-center">{error}</Text>
             )}
+
+            {/* ボタン */}
+            <View className="flex-row gap-3">
+              <TouchableOpacity
+                onPress={handleCancel}
+                disabled={isLoading}
+                className="flex-1 py-3 px-4 rounded-full items-center"
+                style={{ backgroundColor: "#FFFBF7" }}
+              >
+                <Text className="text-sm text-foreground">キャンセル</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={handleSave}
+                disabled={isLoading || !text.trim()}
+                className="flex-1 py-3 px-4 rounded-full items-center"
+                style={{
+                  backgroundColor: text.trim() ? "#A89968" : "#A89968",
+                  opacity: isLoading || !text.trim() ? 0.5 : 1,
+                }}
+              >
+                {isLoading ? (
+                  <ActivityIndicator color="white" size="small" />
+                ) : (
+                  <Text className="text-sm text-white">保存</Text>
+                )}
+              </TouchableOpacity>
+            </View>
           </View>
-        </ScrollView>
-
-        {/* ボタン */}
-        <View className="flex-row gap-3 py-4">
-          <TouchableOpacity
-            onPress={handleCancel}
-            disabled={isLoading}
-            className="flex-1 py-3 px-4 rounded-full items-center"
-            style={{ backgroundColor: "#FFFBF7" }}
-          >
-            <Text className="text-sm text-foreground">キャンセル</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={handleSave}
-            disabled={isLoading || !text.trim()}
-            className="flex-1 py-3 px-4 rounded-full items-center"
-            style={{
-              backgroundColor: text.trim() ? "#A89968" : "#A89968",
-              opacity: isLoading || !text.trim() ? 0.5 : 1,
-            }}
-          >
-            {isLoading ? (
-              <ActivityIndicator color="white" size="small" />
-            ) : (
-              <Text className="text-sm text-white">保存</Text>
-            )}
-          </TouchableOpacity>
         </View>
       </ScreenContainer>
     </KeyboardAvoidingView>
