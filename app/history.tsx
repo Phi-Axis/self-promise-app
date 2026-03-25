@@ -99,11 +99,6 @@ export default function HistoryScreen() {
             {item.promiseText}
           </Text>
 
-          {/* 日付 */}
-          <Text style={{ fontSize: 12, color: colors.muted }}>
-            {formatDate(item.createdAt)}
-          </Text>
-
           {/* 感想（展開時のみ表示） */}
           {isSelected && item.reflectionText && (
             <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: "#E8D7C8" }}>

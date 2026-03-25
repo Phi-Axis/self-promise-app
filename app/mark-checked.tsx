@@ -26,7 +26,7 @@ export default function MarkCheckedScreen() {
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
         <View style={{ alignItems: "center", gap: 32, maxWidth: 320 }}>
           {/* 約束表示 */}
-          <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
+          <Text style={{ fontSize: 18, fontWeight: "600", color: "#2D2D2D", textAlign: "center", lineHeight: 28 }}>
             {promise?.promiseText}
           </Text>
 

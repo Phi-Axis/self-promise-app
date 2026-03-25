@@ -47,19 +47,6 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-      {/* ヘッダー */}
-      <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingHorizontal: 24, paddingVertical: 12 }}>
-        <View style={{ width: 40 }} />
-        <Text style={{ fontSize: 16, fontWeight: "600", color: colors.foreground }}>自分との約束</Text>
-        <View style={{ flexDirection: "row", gap: 12 }}>
-          <TouchableOpacity onPress={handleOpenHistory} style={{ padding: 8 }}>
-            <Text style={{ fontSize: 20 }}>📋</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={handleOpenSettings} style={{ padding: 8 }}>
-            <Text style={{ fontSize: 20 }}>⚙️</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
         {/* State: Empty */}
         {state === "empty" && (
@@ -81,7 +68,7 @@ export default function HomeScreen() {
                 borderColor: "#E8D7C8",
               }}
             >
-              <Text style={{ fontSize: 19, color: "#3A3A3A", fontWeight: "700" }}>
+              <Text style={{ fontSize: 19, color: "#2D2D2D", fontWeight: "800" }}>
                 今日の約束を書く
               </Text>
             </View>
@@ -169,6 +156,16 @@ export default function HomeScreen() {
           <Text style={{ fontSize: 14, color: colors.error }}>{error}</Text>
         </View>
       )}
+
+      {/* フッター - 完了フォルダとリセットボタン */}
+      <View style={{ flexDirection: "row", justifyContent: "center", gap: 24, paddingHorizontal: 24, paddingBottom: 32 }}>
+        <TouchableOpacity onPress={handleOpenHistory} style={{ padding: 8 }}>
+          <Text style={{ fontSize: 24 }}>📋</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleOpenSettings} style={{ padding: 8 }}>
+          <Text style={{ fontSize: 24 }}>⚙️</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
