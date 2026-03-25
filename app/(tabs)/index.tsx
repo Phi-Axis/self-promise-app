@@ -29,6 +29,14 @@ export default function HomeScreen() {
     router.push("/reflection-input" as const);
   };
 
+  const handleOpenHistory = () => {
+    router.push("/history" as const);
+  };
+
+  const handleOpenSettings = () => {
+    router.push("/settings" as const);
+  };
+
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: colors.background }}>
@@ -39,6 +47,19 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+      {/* ヘッダー */}
+      <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingHorizontal: 24, paddingVertical: 12 }}>
+        <View style={{ width: 40 }} />
+        <Text style={{ fontSize: 16, fontWeight: "600", color: colors.foreground }}>自分との約束</Text>
+        <View style={{ flexDirection: "row", gap: 12 }}>
+          <TouchableOpacity onPress={handleOpenHistory} style={{ padding: 8 }}>
+            <Text style={{ fontSize: 20 }}>📋</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleOpenSettings} style={{ padding: 8 }}>
+            <Text style={{ fontSize: 20 }}>⚙️</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
         {/* State: Empty */}
         {state === "empty" && (
