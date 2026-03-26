@@ -1,9 +1,10 @@
-import { View, Text, TouchableOpacity, ActivityIndicator, SafeAreaView, Platform } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator } from "react-native";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
-import { usePromise } from "../../lib/promise-context";
-import { useColors } from "../../hooks/use-colors";
-import { useNotifications } from "../../hooks/use-notifications";
+import { ScreenContainer } from "@/components/screen-container";
+import { usePromise } from "@/lib/promise-context";
+import { useColors } from "@/hooks/use-colors";
+import { useNotifications } from "@/hooks/use-notifications";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -29,143 +30,165 @@ export default function HomeScreen() {
     router.push("/reflection-input" as const);
   };
 
-  const handleOpenHistory = () => {
-    router.push("/history" as const);
+  const handleViewArchived = () => {
+    router.push("/archived-folder");
   };
 
-  const handleOpenSettings = () => {
-    router.push("/settings" as const);
+  const handleSettings = () => {
+    router.push("/settings");
+    // Reschedule notifications after settings change
+    setTimeout(() => scheduleNotification(), 500);
   };
 
   if (isLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: colors.background }}>
+      <ScreenContainer className="flex items-center justify-center">
         <ActivityIndicator size="large" color={colors.primary} />
-      </View>
+      </ScreenContainer>
     );
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
-        {/* State: Empty */}
-        {state === "empty" && (
-          <TouchableOpacity
-            onPress={handleCreatePromise}
-            activeOpacity={0.95}
-            style={{ width: "85%" }}
-          >
-            <View 
-              style={{
-                borderRadius: 24,
-                paddingHorizontal: 24,
-                paddingVertical: 28,
-                minHeight: 140,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#F5EDE3",
-                borderWidth: 1,
-                borderColor: "#E8D7C8",
-              }}
-            >
-              <Text style={{ fontSize: 19, color: "#2D2D2D", fontWeight: "800" }}>
-                今日の約束を書く
-              </Text>
+    <ScreenContainer className="p-6">
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+        <View className="flex-1 gap-8">
+          {/* Header */}
+          <View className="items-center gap-2">
+            <Text className="text-4xl font-bold text-foreground">小さな約束</Text>
+            <Text className="text-sm text-muted text-center">
+              自分を信じることから始まる
+            </Text>
+          </View>
+
+          {/* Main Content Area - State-based rendering */}
+          {state === "empty" && (
+            <View className="flex-1 items-center justify-center gap-6">
+              <TouchableOpacity
+                onPress={handleCreatePromise}
+                className="w-full"
+                activeOpacity={0.98}
+              >
+                <View 
+                  className="w-full rounded-2xl p-8 items-center gap-4"
+                  style={{
+                    backgroundColor: "#F5EDE3",
+                    borderWidth: 2,
+                    borderColor: "#D4C4B0",
+                    shadowColor: "#000",
+                    shadowOffset: { width: 0, height: 4 },
+                    shadowOpacity: 0.06,
+                    shadowRadius: 12,
+                    elevation: 5,
+                    transform: [{ scale: 1 }],
+                  }}
+                >
+                  <Text className="text-2xl font-semibold text-foreground text-center">
+                    今日の約束を書いてみよう
+                  </Text>
+                  <Text className="text-sm text-muted text-center">
+                    小さな約束から始まる。30秒以内で大丈夫です。
+                  </Text>
+                </View>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
-        )}
+          )}
 
-        {/* State: Active */}
-        {state === "active" && (
-          <View style={{ alignItems: "center", gap: 24, maxWidth: 320 }}>
-            <Text style={{ fontSize: 24, color: colors.foreground, textAlign: "center", lineHeight: 32, fontWeight: "700", letterSpacing: 0.5 }}>
-              {promise?.promiseText}
-            </Text>
-            
-            <TouchableOpacity
-              onPress={handleMarkAsChecked}
-              activeOpacity={0.95}
-            >
-              <View 
-                style={{
-                  borderRadius: 20,
-                  paddingHorizontal: 48,
-                  paddingVertical: 16,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#34C759",
-                  borderWidth: 1,
-                  borderColor: "#2BA84B",
-                }}
-              >
-                <Text style={{ fontSize: 16, color: "#fff", fontWeight: "600", textAlign: "center", whiteSpace: "nowrap" }}>
-                  できた✅
+          {/* State B: Active (未完了) */}
+          {state === "active" && (
+            <View className="flex-1 gap-6">
+              <View className="bg-surface rounded-lg p-6 border border-border">
+                <Text className="text-sm text-muted mb-3">今日の約束</Text>
+                <Text className="text-xl font-semibold text-foreground">
+                  {promise?.promiseText}
                 </Text>
               </View>
-            </TouchableOpacity>
-          </View>
-        )}
 
-        {/* State: Checked */}
-        {state === "checked" && (
-          <View style={{ alignItems: "center", gap: 24, maxWidth: 320 }}>
-            <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
-              {promise?.promiseText}
-            </Text>
-            
-            <TouchableOpacity
-              onPress={handleAddReflection}
-              activeOpacity={0.95}
-            >
-              <View 
-                style={{
-                  borderRadius: 20,
-                  paddingHorizontal: 24,
-                  paddingVertical: 8,
-                  alignItems: "center",
-                  backgroundColor: "#F5EDE3",
-                  borderWidth: 1,
-                  borderColor: "#E8D7C8",
-                }}
-              >
-                <Text style={{ fontSize: 12, color: colors.foreground }}>
-                  感想を書く
+              <View className="flex-1 items-center justify-center gap-4">
+                <Text className="text-base text-muted text-center">
+                  実行したら「できた」をタップしてください
+                </Text>
+                <TouchableOpacity
+                  onPress={handleMarkAsChecked}
+                  style={{ backgroundColor: colors.success }}
+                  className="px-8 py-4 rounded-lg"
+                >
+                  <Text className="text-white font-semibold text-lg">できた ✅</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
+
+          {/* State C: Checked (完了・感想未入力) */}
+          {state === "checked" && (
+            <View className="flex-1 gap-6">
+              <View className="bg-success bg-opacity-10 rounded-lg p-6 border border-success">
+                <Text className="text-sm text-success mb-3">完了しました</Text>
+                <Text className="text-xl font-semibold text-foreground">
+                  {promise?.promiseText}
                 </Text>
               </View>
+
+              <View className="flex-1 items-center justify-center gap-4">
+                <Text className="text-base text-muted text-center">
+                  夜に、一言感想を書いてみてください
+                </Text>
+                <TouchableOpacity
+                  onPress={handleAddReflection}
+                  style={{ backgroundColor: colors.primary }}
+                  className="px-8 py-4 rounded-lg"
+                >
+                  <Text className="text-white font-semibold text-base">感想を書く</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
+
+          {/* State D: Archived (完了・感想入力済み) */}
+          {state === "archived" && (
+            <View className="flex-1 gap-6">
+              <View className="bg-surface rounded-lg p-6 border border-border">
+                <Text className="text-sm text-muted mb-3">完了した約束</Text>
+                <Text className="text-xl font-semibold text-foreground mb-4">
+                  {promise?.promiseText}
+                </Text>
+                <Text className="text-sm text-muted mb-2">感想</Text>
+                <Text className="text-base text-foreground italic">
+                  {promise?.reflectionText}
+                </Text>
+              </View>
+
+              <View className="flex-1 items-center justify-center">
+                <Text className="text-base text-muted text-center">
+                  完了フォルダに保存されました
+                </Text>
+              </View>
+            </View>
+          )}
+
+          {/* Error Display */}
+          {error && (
+            <View className="bg-error bg-opacity-10 rounded-lg p-4 border border-error">
+              <Text className="text-sm text-error">{error}</Text>
+            </View>
+          )}
+
+          {/* Bottom Navigation */}
+          <View className="flex-row gap-3 pt-4 border-t border-border">
+            <TouchableOpacity
+              onPress={handleViewArchived}
+              className="flex-1 py-3 px-4 rounded-lg bg-surface border border-border items-center"
+            >
+              <Text className="text-sm font-semibold text-foreground">完了フォルダ</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={handleSettings}
+              className="flex-1 py-3 px-4 rounded-lg bg-surface border border-border items-center"
+            >
+              <Text className="text-sm font-semibold text-foreground">設定</Text>
             </TouchableOpacity>
           </View>
-        )}
-
-        {/* State: Archived */}
-        {state === "archived" && (
-          <View style={{ alignItems: "center", gap: 16, maxWidth: 320 }}>
-            <Text style={{ fontSize: 16, color: colors.foreground, textAlign: "center", lineHeight: 24 }}>
-              {promise?.promiseText}
-            </Text>
-            
-            <Text style={{ fontSize: 12, color: colors.muted, textAlign: "center", lineHeight: 18, fontStyle: "italic" }}>
-              {promise?.reflectionText}
-            </Text>
-          </View>
-        )}
-      </View>
-
-      {/* Error Display */}
-      {error && (
-        <View style={{ backgroundColor: colors.error, opacity: 0.1, borderRadius: 8, padding: 16, borderWidth: 1, borderColor: colors.error, margin: 24 }}>
-          <Text style={{ fontSize: 14, color: colors.error }}>{error}</Text>
         </View>
-      )}
-
-      {/* フッター - 完了フォルダとリセットボタン */}
-      <View style={{ flexDirection: "row", justifyContent: "center", gap: 24, paddingHorizontal: 24, paddingBottom: 32 }}>
-        <TouchableOpacity onPress={handleOpenHistory} style={{ padding: 8 }}>
-          <Text style={{ fontSize: 24 }}>📋</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleOpenSettings} style={{ padding: 8 }}>
-          <Text style={{ fontSize: 24 }}>⚙️</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+      </ScrollView>
+    </ScreenContainer>
   );
 }
