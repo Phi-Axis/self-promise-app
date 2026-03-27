@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView, FlatList, TouchableOpacity, ActivityIndicator
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { usePromise } from "../../lib/promise-context";
-import { useColors } from "../hooks/use-colors";
+import { useColors } from "../../hooks/use-colors";
 
 interface PromiseItem {
   id: string;
