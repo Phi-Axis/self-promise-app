@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, ActivityIndicator, SafeAreaView } from "react-native";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { usePromise } from "../lib/promise-context";
+import { usePromise } from "../../lib/promise-context";
 import { useColors } from "../hooks/use-colors";
 import { ConfirmDialog } from "../components/confirm-dialog";
 
