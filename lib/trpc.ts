@@ -4,6 +4,8 @@ import superjson from "superjson";
 import type { AppRouter } from "../server/routers";
 import { getApiBaseUrl } from "../constants/oauth";
 import * as Auth from "./_core/auth";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from "react";
 
 /**
  * tRPC React client for type-safe API calls.
@@ -39,4 +41,18 @@ export function createTRPCClient() {
       }),
     ],
   });
+}
+
+
+export function TRPCProvider({ children }: { children: React.ReactNode }) {
+  const [queryClient] = useState(() => new QueryClient());
+  const [trpcClient] = useState(() => createTRPCClient());
+
+  return (
+    <trpc.Provider client={trpcClient} queryClient={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    </trpc.Provider>
+  );
 }
