@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { usePromise } from "../../lib/promise-context";
 import { useColors } from "../../hooks/use-colors";
-import { ConfirmDialog } from "../components/confirm-dialog";
+import { ConfirmDialog } from "../../components/confirm-dialog";
 
 export default function SettingsScreen() {
   const router = useRouter();
