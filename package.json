@@ -18,6 +18,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "qr": "node scripts/generate_qr.mjs"
+  "engines": {
+  "node": "20.x"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
