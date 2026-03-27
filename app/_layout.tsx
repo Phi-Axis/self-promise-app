@@ -1,6 +1,6 @@
 import "../global.css";
 import { Stack } from "expo-router";
-import { PromiseProvider } from "../lib/promise-conte";
+import { PromiseProvider } from "../lib/promise-context";
 
 export default function Layout() {
   return (
