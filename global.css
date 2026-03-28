@@ -50,3 +50,6 @@ input:-webkit-autofill:focus {
   border-color: #D4C4B0 !important;
   outline: none !important;
 }
+body {
+  background: red !important;
+}
