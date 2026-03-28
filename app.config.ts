@@ -131,9 +131,6 @@ const config: ExpoConfig = {
       },
     ],
   ],
-  web: {
-    bundler: "metro"
-  },
   experiments: {
     typedRoutes: true,
     reactCompiler: true,
