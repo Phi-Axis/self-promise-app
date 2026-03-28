@@ -1,1 +1,9 @@
-
+{
+  "expo": {
+    "name": "app-template",
+    "slug": "app-template",
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
