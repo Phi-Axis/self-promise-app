@@ -5,3 +5,5 @@ module.exports = function(api) {
     plugins: ['nativewind/babel'],
   };
 };
+
+// redeploy fix babel
