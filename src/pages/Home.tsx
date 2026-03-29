@@ -25,7 +25,7 @@ export const Home = ({
   <div className="min-h-screen p-6 bg-blue-100">
     <div className="max-w-2xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-red-500 text-5xl">
+        <h1 className="text-3xl font-light text-warm-900 mb-2">
           自分との約束
         </h1>
         <p className="text-sm text-gray-600">
