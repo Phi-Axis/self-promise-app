@@ -17,6 +17,7 @@ module.exports = {
   darkMode: "class",
   // Scan all component and app files for Tailwind classes
   content: [
+    "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
