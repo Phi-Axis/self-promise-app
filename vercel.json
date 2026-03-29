@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm run build:web",
+  "buildCommand": "npm run build:web",
   "outputDirectory": "dist/web",
   "env": {
     "NODE_ENV": "production"
