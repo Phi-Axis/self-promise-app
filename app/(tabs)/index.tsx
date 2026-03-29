@@ -1,1 +1,1 @@
-export { default } from "../promise-input";
+export { default } from "../dev";
