@@ -1,1 +1,1 @@
-export { default } from "../dev";
+export { default } from "./(tabs)";
