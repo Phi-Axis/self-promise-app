@@ -86,6 +86,7 @@
     "tsx": "^4.21.0",
     "typescript": "~5.9.3",
     "vitest": "^2.1.9",
-     "autoprefixer": "^10.4.20"
+    "autoprefixer": "^10.4.20"
+    "postcss": "^8.4.35"
   }
 }
