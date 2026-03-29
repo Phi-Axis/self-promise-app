@@ -17,14 +17,10 @@ module.exports = {
   darkMode: "class",
   // Scan all component and app files for Tailwind classes
   content: [
-  "./src/**/*.{js,ts,jsx,tsx}",
-],
-
-  presets: [require("nativewind/preset")],
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
-    extend: {
-      colors: tailwindColors,
-    },
+    extend: {},
   },
   plugins: [
     plugin(({ addVariant }) => {
