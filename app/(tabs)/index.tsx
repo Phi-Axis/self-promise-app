@@ -1,1 +1,1 @@
-export { default } from "../dev/theme-lab";
+export { default } from "./home";
