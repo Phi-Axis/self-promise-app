@@ -10,7 +10,7 @@ export default function CompletionScreen() {
   useEffect(() => {
     // 4秒間完了画面を表示してからホーム画面に戻す
     const timer = setTimeout(() => {
-      router.replace("/(tabs)");
+      router.replace("/(tabs)/index");
     }, 4000);
 
     return () => clearTimeout(timer);
