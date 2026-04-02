@@ -7,7 +7,7 @@ export default function Layout() {
   return (
     <TRPCProvider>
       <PromiseProvider>
-        <Stack />
+        <Stack screenOptions={{ headerShown: false }} />
       </PromiseProvider>
     </TRPCProvider>
   );
