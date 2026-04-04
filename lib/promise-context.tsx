@@ -171,7 +171,16 @@ export function PromiseProvider({ children }: { children: React.ReactNode }) {
       try {
         dispatch({ type: "SET_LOADING", payload: true });
         dispatch({ type: "SET_ERROR", payload: null });
-        
+        const today = new Date().toISOString().split("T")[0];
+
+        if (state.promise) {
+          const existingDate = new Date(state.promise.createdAt).toISOString().split("T")[0];
+
+          if (existingDate === today) {
+            dispatch({ type: "SET_ERROR", payload: "今日はすでに約束があります" });
+            return;
+          }
+        }
         const newPromise: PromiseData = {
           id: Date.now().toString(),
           promiseText,
