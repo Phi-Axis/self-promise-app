@@ -42,9 +42,6 @@ export default function SettingsScreen() {
       <View style={{ flex: 1, paddingHorizontal: 24, paddingTop: 16 }}>
         {/* ヘッダー */}
         <View style={{ marginBottom: 32 }}>
-          <TouchableOpacity onPress={handleBack} style={{ marginBottom: 16 }}>
-            <Text style={{ fontSize: 16, color: colors.foreground }}>← ホームに戻る</Text>
-          </TouchableOpacity>
           <Text style={{ fontSize: 24, fontWeight: "bold", color: colors.foreground }}>
             設定
           </Text>
