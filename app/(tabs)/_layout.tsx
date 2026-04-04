@@ -24,7 +24,7 @@ export default function TabLayout() {
           title: "Home",
           tabBarIcon: ({ focused }) => (
             <Ionicons
-              name="folder"
+              name="home"
               size={28}
               color={focused ? "#a99278" : "#c9c0b4"}
             />
@@ -38,7 +38,7 @@ export default function TabLayout() {
           title: "履歴",
           tabBarIcon: ({ focused }) => (
             <Ionicons
-              name="home"
+              name="folder"
               size={28}
               color={focused ? "#a99278" : "#c9c0b4"}
             />
