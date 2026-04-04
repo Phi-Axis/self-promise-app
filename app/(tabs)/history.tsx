@@ -1,6 +1,5 @@
-import { View, Text, SafeAreaView, FlatList, TouchableOpacity, ActivityIndicator } from "react-native";
-import { useRouter } from "expo-router";
-import { useEffect, useState } from "react";
+import { View, Text, SafeAreaView, FlatList, ActivityIndicator } from "react-native";
+import { useEffect } from "react";
 import { usePromise } from "../../lib/promise-context";
 import { useColors } from "../../hooks/use-colors";
 
@@ -12,35 +11,12 @@ interface PromiseItem {
 }
 
 export default function HistoryScreen() {
-  const router = useRouter();
   const colors = useColors();
   const { archivedPromises, fetchArchivedPromises, isLoading } = usePromise();
-  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchArchivedPromises();
   }, [fetchArchivedPromises]);
-
-  const handleBack = () => {
-    router.back();
-  };
-
-  const handleItemPress = (id: string) => {
-    setSelectedId(selectedId === id ? null : id);
-  };
-
-  const formatDate = (dateString: string) => {
-    try {
-      const date = new Date(dateString);
-      return date.toLocaleDateString("ja-JP", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      });
-    } catch {
-      return dateString;
-    }
-  };
 
   if (isLoading) {
     return (
@@ -69,17 +45,9 @@ export default function HistoryScreen() {
     );
   }
 
-  // 新しい順でソート
-  const sortedPromises = [...archivedPromises].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  );
-
   const renderItem = ({ item }: { item: PromiseItem }) => {
-    const isSelected = selectedId === item.id;
-
     return (
-      <TouchableOpacity
-        onPress={() => handleItemPress(item.id)}
+      <View
         style={{
           backgroundColor: colors.surface,
           borderRadius: 12,
@@ -90,40 +58,46 @@ export default function HistoryScreen() {
         }}
       >
         <View style={{ gap: 8 }}>
-          {/* 約束 */}
           <Text style={{ fontSize: 16, fontWeight: "600", color: colors.foreground }}>
             {item.promiseText}
           </Text>
 
-          {/* 感想（展開時のみ表示） */}
-          {isSelected && item.reflectionText && (
-            <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: "#E8D7C8" }}>
-              <Text style={{ fontSize: 14, color: colors.foreground, fontStyle: "italic", lineHeight: 20 }}>
+          {item.reflectionText ? (
+            <View
+              style={{
+                marginTop: 12,
+                paddingTop: 12,
+                borderTopWidth: 1,
+                borderTopColor: "#E8D7C8",
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: colors.foreground,
+                  lineHeight: 20,
+                }}
+              >
                 {item.reflectionText}
               </Text>
             </View>
-          )}
+          ) : null}
         </View>
-      </TouchableOpacity>
+      </View>
     );
   };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <View style={{ flex: 1, paddingHorizontal: 24, paddingTop: 16 }}>
-        {/* ヘッダー */}
         <View style={{ marginBottom: 24 }}>
-          <TouchableOpacity onPress={handleBack} style={{ marginBottom: 16 }}>
-            <Text style={{ fontSize: 16, color: colors.foreground }}>← ホームに戻る</Text>
-          </TouchableOpacity>
           <Text style={{ fontSize: 24, fontWeight: "bold", color: colors.foreground }}>
             履歴
           </Text>
         </View>
 
-        {/* リスト */}
         <FlatList
-          data={sortedPromises}
+          data={archivedPromises}
           keyExtractor={(item) => item.id}
           renderItem={renderItem}
           scrollEnabled={true}
