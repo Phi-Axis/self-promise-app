@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView, FlatList, ActivityIndicator } from "react-native";
-import { useEffect } from "react";
+import { View, Text, SafeAreaView, FlatList, TouchableOpacity, ActivityIndicator } from "react-native";
+import { useEffect, useState } from "react";
 import { usePromise } from "../../lib/promise-context";
 import { useColors } from "../../hooks/use-colors";
 
@@ -13,10 +13,19 @@ interface PromiseItem {
 export default function HistoryScreen() {
   const colors = useColors();
   const { archivedPromises, fetchArchivedPromises, isLoading } = usePromise();
+  const [openIds, setOpenIds] = useState<string[]>([]);
 
   useEffect(() => {
     fetchArchivedPromises();
   }, [fetchArchivedPromises]);
+
+  const toggleItem = (id: string) => {
+    if (openIds.includes(id)) {
+      setOpenIds(openIds.filter((itemId) => itemId !== id));
+    } else {
+      setOpenIds([...openIds, id]);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -31,7 +40,14 @@ export default function HistoryScreen() {
   if (archivedPromises.length === 0) {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            paddingHorizontal: 24,
+          }}
+        >
           <View style={{ alignItems: "center", gap: 12 }}>
             <Text style={{ fontSize: 18, fontWeight: "600", color: colors.foreground }}>
               履歴がありません
@@ -46,8 +62,12 @@ export default function HistoryScreen() {
   }
 
   const renderItem = ({ item }: { item: PromiseItem }) => {
+    const isOpen = openIds.includes(item.id);
+
     return (
-      <View
+      <TouchableOpacity
+        onPress={() => toggleItem(item.id)}
+        activeOpacity={0.9}
         style={{
           backgroundColor: colors.surface,
           borderRadius: 12,
@@ -58,11 +78,17 @@ export default function HistoryScreen() {
         }}
       >
         <View style={{ gap: 8 }}>
-          <Text style={{ fontSize: 16, fontWeight: "600", color: colors.foreground }}>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: "600",
+              color: colors.foreground,
+            }}
+          >
             {item.promiseText}
           </Text>
 
-          {item.reflectionText ? (
+          {isOpen && (
             <View
               style={{
                 marginTop: 12,
@@ -78,12 +104,12 @@ export default function HistoryScreen() {
                   lineHeight: 20,
                 }}
               >
-                {item.reflectionText}
+                {item.reflectionText ? item.reflectionText : ""}
               </Text>
             </View>
-          ) : null}
+          )}
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -100,7 +126,6 @@ export default function HistoryScreen() {
           data={archivedPromises}
           keyExtractor={(item) => item.id}
           renderItem={renderItem}
-          scrollEnabled={true}
           showsVerticalScrollIndicator={false}
         />
       </View>
