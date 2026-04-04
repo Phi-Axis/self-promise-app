@@ -56,10 +56,6 @@ export default function HistoryScreen() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
-          <TouchableOpacity onPress={handleBack} style={{ position: "absolute", top: 16, left: 24 }}>
-            <Text style={{ fontSize: 16, color: colors.foreground }}>← ホームに戻る</Text>
-          </TouchableOpacity>
-
           <View style={{ alignItems: "center", gap: 12 }}>
             <Text style={{ fontSize: 18, fontWeight: "600", color: colors.foreground }}>
               履歴がありません
