@@ -233,7 +233,7 @@ export function PromiseProvider({ children }: { children: React.ReactNode }) {
         // Save to archived promises
         const updated = [...state.archivedPromises, updatedPromise];
         await saveArchivedPromises(updated);
-        
+        dispatch({ type: "SET_ARCHIVED", payload: updated });
         // Save to localStorage with key "promises"
         if (typeof localStorage !== 'undefined') {
           try {
