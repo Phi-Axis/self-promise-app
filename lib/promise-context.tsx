@@ -133,21 +133,9 @@ export function PromiseProvider({ children }: { children: React.ReactNode }) {
 
   const loadArchivedPromises = useCallback(async () => {
     try {
-      // Check if localStorage has been cleared (for reset flow)
-      if (typeof localStorage !== 'undefined') {
-        const localStorageEmpty = localStorage.length === 0 || localStorage.getItem('archivedPromises') === null;
-        if (localStorageEmpty) {
-          console.log('[PROMISE-CTX] localStorage is empty, skipping archived load');
-          return;
-        }
-      }
-      
+     
       const stored = await AsyncStorage.getItem("archivedPromises");
-      // Double-check that localStorage is still not empty before loading
-      if (typeof localStorage !== 'undefined' && localStorage.length === 0) {
-        console.log('[PROMISE-CTX] localStorage was cleared during async operation, skipping archived load');
-        return;
-      }
+      
       if (stored) {
         const archived = JSON.parse(stored);
         dispatch({ type: "SET_ARCHIVED", payload: archived });
