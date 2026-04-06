@@ -89,16 +89,7 @@ export function PromiseProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const loadPromiseFromStorage = useCallback(async () => {
-    try {
-      // Check if localStorage has been cleared (for reset flow)
-      if (typeof localStorage !== 'undefined') {
-        const localStorageEmpty = localStorage.length === 0 || localStorage.getItem('todayPromise') === null;
-        if (localStorageEmpty) {
-          console.log('[PROMISE-CTX] localStorage is empty, skipping load');
-          return;
-        }
-      }
-      
+    try { 
       const stored = await AsyncStorage.getItem("todayPromise");
       // Double-check that localStorage is still not empty before loading
       if (typeof localStorage !== 'undefined' && localStorage.length === 0) {
