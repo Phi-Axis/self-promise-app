@@ -1,4 +1,5 @@
 import { View, Text, TouchableOpacity, ActivityIndicator, SafeAreaView } from "react-native";
+import { useEffect } from "react";
 import { useRouter } from "expo-router";
 import { usePromise } from "../lib/promise-context";
 import { useColors } from "../hooks/use-colors";
@@ -8,6 +9,12 @@ export default function MarkCheckedScreen() {
   const colors = useColors();
   const { promise, markAsChecked, isLoading } = usePromise();
 
+  useEffect(() => {
+  if (!promise) {
+    router.replace("/home");
+  }
+}, [promise, router]);
+  
   const handleConfirm = async () => {
     try {
       await markAsChecked();
