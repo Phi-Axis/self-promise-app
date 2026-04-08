@@ -1,6 +1,5 @@
 import { View, Text, TouchableOpacity, ActivityIndicator, SafeAreaView } from "react-native";
-import { useEffect } from "react";
-import { useRouter } from "expo-router";
+import { useRouter, Redirect } from "expo-router";
 import { usePromise } from "../lib/promise-context";
 import { useColors } from "../hooks/use-colors";
 
@@ -9,12 +8,10 @@ export default function MarkCheckedScreen() {
   const colors = useColors();
   const { promise, markAsChecked, isLoading } = usePromise();
 
-  useEffect(() => {
   if (!promise) {
-    router.replace("/home");
+    return <Redirect href="/home" />;
   }
-}, [promise, router]);
-  
+
   const handleConfirm = async () => {
     try {
       await markAsChecked();
@@ -32,12 +29,10 @@ export default function MarkCheckedScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
         <View style={{ alignItems: "center", gap: 32, maxWidth: 320 }}>
-          {/* 約束表示 */}
           <Text style={{ fontSize: 18, fontWeight: "600", color: "#2D2D2D", textAlign: "center", lineHeight: 28 }}>
-            {promise?.promiseText}
+            {promise.promiseText}
           </Text>
 
-          {/* ボタン */}
           <View style={{ flexDirection: "row", gap: 12, width: "100%" }}>
             <TouchableOpacity
               onPress={handleCancel}
@@ -64,7 +59,9 @@ export default function MarkCheckedScreen() {
               {isLoading ? (
                 <ActivityIndicator color="#fff" size="small" />
               ) : (
-                <Text style={{ fontSize: 16, color: "#fff", fontWeight: "600", textAlign: "center", whiteSpace: "nowrap" }}>できた✅</Text>
+                <Text style={{ fontSize: 16, color: "#fff", fontWeight: "600", textAlign: "center", whiteSpace: "nowrap" }}>
+                  できた✅
+                </Text>
               )}
             </TouchableOpacity>
           </View>
