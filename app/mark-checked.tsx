@@ -9,7 +9,7 @@ export default function MarkCheckedScreen() {
   const colors = useColors();
   const { promise, markAsChecked, isLoading } = usePromise();
   
-  if (!promise) {
+  if (!promise && isLoading) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -17,6 +17,11 @@ export default function MarkCheckedScreen() {
       </View>
     </SafeAreaView>
   );
+}
+
+if (!promise) {
+  router.replace("/home");
+  return null;
 }
   
   const handleConfirm = async () => {
