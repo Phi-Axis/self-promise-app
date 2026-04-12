@@ -9,11 +9,7 @@ export default function MarkCheckedScreen() {
   const colors = useColors();
   const { promise, markAsChecked, isLoading } = usePromise();
   
-  useEffect(() => {
-   if (!isLoading && !promise) {
-    router.replace("/home");
-   }
-  }, [isLoading, promise, router]);
+   if (!promise) return null;
   
   const handleConfirm = async () => {
     try {
