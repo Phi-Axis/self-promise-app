@@ -8,12 +8,6 @@ export default function MarkCheckedScreen() {
   const router = useRouter();
   const colors = useColors();
   const { promise, markAsChecked, isLoading } = usePromise();
-
-  useEffect(() => {
-    if (!isLoading && !promise) {
-      router.replace("/");
-    }
-  }, [isLoading, promise, router]);
   
   if (!promise) {
   return (
