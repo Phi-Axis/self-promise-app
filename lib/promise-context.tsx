@@ -80,13 +80,18 @@ export function PromiseProvider({ children }: { children: React.ReactNode }) {
 
   // Load promise from AsyncStorage on mount and check for daily cleanup
   useEffect(() => {
-    const initializeApp = async () => {
+  const initializeApp = async () => {
+    dispatch({ type: "SET_LOADING", payload: true });
+    try {
       await checkAndPerformDailyCleanup();
       await loadPromiseFromStorage();
       await loadArchivedPromises();
-    };
-    initializeApp();
-  }, []);
+    } finally {
+      dispatch({ type: "SET_LOADING", payload: false });
+    }
+  };
+  initializeApp();
+}, []);
 
   const loadPromiseFromStorage = useCallback(async () => {
     try { 
