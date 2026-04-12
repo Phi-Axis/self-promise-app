@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { View, Text, TouchableOpacity, ActivityIndicator, SafeAreaView } from "react-native";
-import { useRouter} from "expo-router";
+import { useRouter, Redirect } from "expo-router";
 import { usePromise } from "../lib/promise-context";
 import { useColors } from "../hooks/use-colors";
 
@@ -20,8 +20,7 @@ export default function MarkCheckedScreen() {
 }
 
 if (!promise) {
-  router.replace("/home");
-  return null;
+  return <Redirect href="/home" />;
 }
   
   const handleConfirm = async () => {
