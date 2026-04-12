@@ -101,11 +101,15 @@ export function PromiseProvider({ children }: { children: React.ReactNode }) {
       try {
         const promise = JSON.parse(stored);
 
-        const createdDate = promise?.createdAt
-          ? new Date(promise.createdAt).toISOString().split("T")[0]
+        const created = promise?.createdAt ? new Date(promise.createdAt) : null;
+
+        const createdDate = created
+          ? `${created.getFullYear()}-${String(created.getMonth() + 1).padStart(2, "0")}-${String(created.getDate()).padStart(2, "0")}`
           : null;
 
-        const today = new Date().toISOString().split("T")[0];
+        const now = new Date();
+
+        const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
         if (createDate && createdDate === today) {
           dispatch({ type: "SET_PROMISE", payload: promise });
         } else {
