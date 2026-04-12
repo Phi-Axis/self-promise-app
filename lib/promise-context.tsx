@@ -49,7 +49,7 @@ type Action =
 const initialState: State = {
   promise: null,
   archivedPromises: [],
-  isLoading: false,
+  isLoading: true,
   error: null,
 };
 
