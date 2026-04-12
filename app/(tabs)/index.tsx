@@ -13,9 +13,8 @@ export default function Index() {
     );
   }
 
-  if (promise) {
-    return <Redirect href="/mark-checked" />;
-  }
+  import { Redirect } from "expo-router";
 
-  return <Redirect href="/promise-input" />;
+export default function Index() {
+  return <Redirect href="/home" />;
 }
