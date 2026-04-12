@@ -1,43 +1,21 @@
-import { Pressable, Text, View } from "react-native";
-import { useRouter } from "expo-router";
+import { Redirect } from "expo-router";
+import { usePromise } from "../../lib/promise-context";
+import { ActivityIndicator, View } from "react-native";
 
-export default function HomeScreen() {
-  const router = useRouter();
+export default function Index() {
+  const { promise, isLoading } = usePromise();
 
-  return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "#f5f2ee",
-        justifyContent: "center",
-        alignItems: "center",
-        paddingHorizontal: 24,
-      }}
-    >
-      <Pressable
-        onPress={() => router.push("/promise-input")}
-        style={{
-          width: "100%",
-          maxWidth: 320,
-          height: 140,
-          borderRadius: 28,
-          borderWidth: 1,
-          borderColor: "#d8c8b8",
-          backgroundColor: "#efe8df",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 28,
-            fontWeight: "700",
-            color: "#5f5f5f",
-          }}
-        >
-          今日の約束を書く
-        </Text>
-      </Pressable>
-    </View>
-  );
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  if (promise) {
+    return <Redirect href="/mark-checked" />;
+  }
+
+  return <Redirect href="/promise-input" />;
 }
