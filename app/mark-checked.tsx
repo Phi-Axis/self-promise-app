@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { View, Text, TouchableOpacity, ActivityIndicator, SafeAreaView } from "react-native";
-import { useRouter} from "expo-router";
+import { useRouter, Redirect } from "expo-router";
 import { usePromise } from "../lib/promise-context";
 import { useColors } from "../hooks/use-colors";
 
@@ -9,7 +9,7 @@ export default function MarkCheckedScreen() {
   const colors = useColors();
   const { promise, markAsChecked, isLoading } = usePromise();
   
-  if (!promise) {
+  if (isLoading) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -19,6 +19,9 @@ export default function MarkCheckedScreen() {
   );
 }
 
+if (!promise) {
+  return <Redirect href="/home" />;
+}
   const handleConfirm = async () => {
     try {
       await markAsChecked();
