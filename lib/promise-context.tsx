@@ -90,7 +90,7 @@ export function PromiseProvider({ children }: { children: React.ReactNode }) {
 
   const loadPromiseFromStorage = useCallback(async () => {
     try { 
-      const stored = await AsyncStorage.getItem("
+      const stored = await AsyncStorage.getItem("todayPromise");
       if (stored) {
         const promise = JSON.parse(stored);
         // Only load if it's today's promise
