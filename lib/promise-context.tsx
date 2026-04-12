@@ -94,30 +94,29 @@ export function PromiseProvider({ children }: { children: React.ReactNode }) {
 }, []);
 
   const loadPromiseFromStorage = useCallback(async () => {
-    try { 
-      const stored = await AsyncStorage.getItem("todayPromise");
+  try {
+    const stored = await AsyncStorage.getItem("todayPromise");
 
-      if (stored) {
-        try {
-          const promise = JSON.parse(stored);
+    if (stored) {
+      try {
+        const promise = JSON.parse(stored);
 
-          // Only load if it's today's promise
-          const createdDate = new Date(promise.createdAt).toISOString().split("T")[0];
-          const today = new Date().toISOString().split("T")[0];
+        const createdDate = new Date(promise.createdAt).toISOString().split("T")[0];
+        const today = new Date().toISOString().split("T")[0];
 
-          if (createdDate === today) {
-            dispatch({ type: "SET_PROMISE", payload: promise });
-          } else {
-            // Remove yesterday's promise
-            await AsyncStorage.removeItem("todayPromise");
-          }
-        } catch (e) {
+        if (createdDate === today) {
+          dispatch({ type: "SET_PROMISE", payload: promise });
+        } else {
           await AsyncStorage.removeItem("todayPromise");
         }
-    } catch (error) {
-      console.error("Failed to load promise from storage:", error);
+      } catch (e) {
+        await AsyncStorage.removeItem("todayPromise");
+      }
     }
-  }, []);
+  } catch (error) {
+    console.error("Failed to load promise from storage:", error);
+  }
+}, []);
 
   const savePromiseToStorage = useCallback(async (promise: PromiseData) => {
     try {
