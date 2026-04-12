@@ -9,7 +9,15 @@ export default function MarkCheckedScreen() {
   const colors = useColors();
   const { promise, markAsChecked, isLoading } = usePromise();
   
-   if (!promise) return null;
+  if (!promise) {
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color="#34C759" />
+      </View>
+    </SafeAreaView>
+  );
+}
   
   const handleConfirm = async () => {
     try {
