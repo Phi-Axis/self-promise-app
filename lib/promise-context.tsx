@@ -101,10 +101,12 @@ export function PromiseProvider({ children }: { children: React.ReactNode }) {
       try {
         const promise = JSON.parse(stored);
 
-        const createdDate = new Date(promise.createdAt).toISOString().split("T")[0];
-        const today = new Date().toISOString().split("T")[0];
+        const createdDate = promise?.createdAt
+          ? new Date(promise.createdAt).toISOString().split("T")[0]
+          : null;
 
-        if (createdDate === today) {
+        const today = new Date().toISOString().split("T")[0];
+        if (createDate && createdDate === today) {
           dispatch({ type: "SET_PROMISE", payload: promise });
         } else {
           await AsyncStorage.removeItem("todayPromise");
