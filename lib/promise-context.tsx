@@ -1,3 +1,4 @@
+import { Platform } from "react-native";
 import { createContext, useReducer, useCallback, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { checkAndPerformDailyCleanup } from "./daily-cleanup";
@@ -99,7 +100,7 @@ export function PromiseProvider({ children }: { children: React.ReactNode }) {
 
     if (stored) {
       try {
-        const promise = JSON.parse(stored);
+        const promise = stored ? JSON.parse(stored) : null;      
 
         const created = promise?.createdAt ? new Date(promise.createdAt) : null;
 
