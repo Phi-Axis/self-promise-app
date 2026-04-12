@@ -18,14 +18,13 @@ export default function TabLayout() {
         },
       }}
     >
-
       <Tabs.Screen
-        name="history"
+        name="home"
         options={{
-          title: "履歴",
+          title: "Home",
           tabBarIcon: ({ focused }) => (
             <Ionicons
-              name="folder"
+              name="home"
               size={28}
               color={focused ? "#a99278" : "#c9c0b4"}
             />
@@ -34,12 +33,12 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="home"
+        name="history"
         options={{
-          title: "Home",
+          title: "履歴",
           tabBarIcon: ({ focused }) => (
             <Ionicons
-              name="home"
+              name="folder"
               size={28}
               color={focused ? "#a99278" : "#c9c0b4"}
             />
@@ -67,7 +66,6 @@ export default function TabLayout() {
           href: null,
         }}
       />
-
     </Tabs>
   );
 }
