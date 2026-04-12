@@ -11,7 +11,7 @@ export default function MarkCheckedScreen() {
 
   useEffect(() => {
     if (!isLoading && !promise) {
-      router.replace("/home");
+      router.replace("/");
     }
   }, [isLoading, promise, router]);
   
