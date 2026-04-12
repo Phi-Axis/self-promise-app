@@ -15,7 +15,7 @@ export default function MarkCheckedScreen() {
     }
   }, [isLoading, promise, router]);
   
-  if (!promise && isLoading) {
+  if (!promise) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
