@@ -39,7 +39,7 @@ export default function ReflectionInputScreen() {
           <View style={{ width: "100%", maxWidth: 320, gap: 16 }}>
             {/* 約束表示 */}
             <View style={{ gap: 16 }}>
-              <Text style={{ fontSize: 32, fontWeight: "700", color: colors.foreground, textAlign: "center", lineHeight: 32, marginBottom: 24 }}>
+              <Text style={{ fontSize: 26, fontWeight: "700", color: colors.foreground, textAlign: "center", lineHeight: 32, marginBottom: 24 }}>
                 {promise?.promiseText}
               </Text>
             </View>
