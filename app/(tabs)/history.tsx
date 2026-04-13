@@ -117,12 +117,6 @@ export default function HistoryScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-      <View style={{ flex: 1, paddingHorizontal: 24, paddingTop: 16 }}>
-        <View style={{ marginBottom: 24 }}>
-          <Text style={{ fontSize: 24, fontWeight: "bold", color: colors.foreground }}>
-            履歴
-          </Text>
-        </View>
 
         <FlatList
           data={archivedPromises}
