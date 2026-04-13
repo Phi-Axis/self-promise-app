@@ -102,6 +102,7 @@ export default function HistoryScreen() {
                   fontSize: 14,
                   color: colors.foreground,
                   lineHeight: 20,
+                  fontStyle: "italic",
                 }}
               >
                 {item.reflectionText ? item.reflectionText : ""}
