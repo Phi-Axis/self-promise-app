@@ -95,6 +95,7 @@ export default function HistoryScreen() {
                 paddingTop: 12,
                 borderTopWidth: 1,
                 borderTopColor: "#E8D7C8",
+                paddingLeft: 18,
               }}
             >
               <Text
