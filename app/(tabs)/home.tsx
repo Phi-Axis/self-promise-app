@@ -19,7 +19,7 @@ export default function HomeScreen() {
         style={{
           width: "100%",
           maxWidth: 320,
-          height: 140,
+          height: 160,
           borderRadius: 28,
           borderWidth: 1,
           borderColor: "#d8c8b8",
