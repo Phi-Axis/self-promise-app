@@ -39,7 +39,7 @@ if (!promise) {
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingHorizontal: 24 }}>
         <View style={{ alignItems: "center", gap: 32, maxWidth: 320 }}>
-          <Text style={{ fontSize: 32, fontWeight: "700", color: "#2D2D2D", textAlign: "center", lineHeight: 34 }}>
+          <Text style={{ fontSize: 26, fontWeight: "700", color: "#2D2D2D", textAlign: "center", lineHeight: 34 }}>
             {promise?.promiseText}
           </Text>
 
