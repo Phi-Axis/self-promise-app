@@ -18,20 +18,7 @@ export default function TabLayout() {
         },
       }}
     >
-      <Tabs.Screen
-        name="home"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name="home"
-              size={28}
-              color={focused ? "#a99278" : "#c9c0b4"}
-            />
-          ),
-        }}
-      />
-
+      
       <Tabs.Screen
         name="history"
         options={{
@@ -46,6 +33,20 @@ export default function TabLayout() {
         }}
       />
 
+      <Tabs.Screen
+        name="home"
+        options={{
+          title: "Home",
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name="home"
+              size={28}
+              color={focused ? "#a99278" : "#c9c0b4"}
+            />
+          ),
+        }}
+      />
+      
       <Tabs.Screen
         name="settings"
         options={{
