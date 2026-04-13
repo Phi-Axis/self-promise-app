@@ -100,7 +100,7 @@ export default function HistoryScreen() {
             >
               <Text
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   color: colors.foreground,
                   lineHeight: 20,
                   fontStyle: "italic",
