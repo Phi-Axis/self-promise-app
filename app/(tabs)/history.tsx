@@ -85,7 +85,7 @@ export default function HistoryScreen() {
               color: colors.foreground,
             }}
           >
-            {item.promiseText}
+           ✨ {item.promiseText}
           </Text>
 
           {isOpen && (
