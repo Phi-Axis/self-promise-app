@@ -124,7 +124,6 @@ export default function HistoryScreen() {
           renderItem={renderItem}
           showsVerticalScrollIndicator={false}
         />
-      </View>
     </SafeAreaView>
   );
 }
