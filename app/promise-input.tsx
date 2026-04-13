@@ -65,7 +65,7 @@ export default function PromiseInputScreen() {
               }}
             />
             {error && (
-              <Text style={{ fontSize: 24, color: colors.error, textAlign: "center" }}>{error}</Text>
+              <Text style={{ fontSize: 32, color: colors.error, textAlign: "center" }}>{error}</Text>
             )}
 
             {/* ボタン */}
