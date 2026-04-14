@@ -53,7 +53,7 @@ export default function SettingsScreen() {
             onPress={() => setShowConfirm(true)}
             disabled={isLoading || isResetting}
             style={{
-              paddingVertical: 16,
+              paddingVertical: 18,
               paddingHorizontal: 20,
               borderRadius: 12,
               alignItems: "center",
@@ -70,7 +70,7 @@ export default function SettingsScreen() {
             )}
           </TouchableOpacity>
 
-          <Text style={{ fontSize: 12, color: colors.muted, textAlign: "center", marginTop: 8 }}>
+          <Text style={{ fontSize: 12, color: colors.muted, textAlign: "center", marginTop: 20 }}>
             すべての記録を削除します。この操作は取り消せません。
           </Text>
         </View>
