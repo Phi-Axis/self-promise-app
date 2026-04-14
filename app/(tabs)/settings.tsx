@@ -70,7 +70,7 @@ export default function SettingsScreen() {
             )}
           </TouchableOpacity>
 
-          <Text style={{ fontSize: 12, color: colors.muted, textAlign: "center", marginTop: 36 }}>
+          <Text style={{ fontSize: 12, color: colors.muted, textAlign: "center", marginTop: 60 }}>
             すべての記録を削除します。この操作は取り消せません。
           </Text>
         </View>
