@@ -53,7 +53,7 @@ export default function SettingsScreen() {
             onPress={() => setShowConfirm(true)}
             disabled={isLoading || isResetting}
             style={{
-              paddingVertical: 24,
+              paddingVertical: 30,
               paddingHorizontal: 20,
               borderRadius: 12,
               alignItems: "center",
