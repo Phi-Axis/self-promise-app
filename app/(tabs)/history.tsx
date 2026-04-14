@@ -85,7 +85,7 @@ export default function HistoryScreen() {
       fontWeight: "600",
       color: colors.foreground,
       lineHeight: 22,
-      marginRight: 3,
+      marginRight: 2,
     }}
   >
     ✨
