@@ -39,7 +39,7 @@ export default function SettingsScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-      <View style={{ flex: 1, paddingHorizontal: 24, paddingTop: 16 }}>
+      <View style={{ flex: 1, paddingHorizontal: 24, paddingTop: 80 }}>
         {/* ヘッダー */}
         <View style={{ marginBottom: 20 }}>
           <Text style={{ fontSize: 24, fontWeight: "bold", color: colors.foreground }}>
