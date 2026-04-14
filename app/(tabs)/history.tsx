@@ -78,31 +78,17 @@ export default function HistoryScreen() {
         }}
       >
         <View style={{ gap: 8 }}>
-          <View style={{ flexDirection: "row", alignItems: "flex-start" }}>
-  <Text
-    style={{
-      fontSize: 16,
-      fontWeight: "600",
-      color: colors.foreground,
-      lineHeight: 22,
-      marginRight: 2,
-    }}
-  >
-    ✨
-  </Text>
-
-  <Text
-    style={{
-      flex: 1,
-      fontSize: 16,
-      fontWeight: "600",
-      color: colors.foreground,
-      lineHeight: 22,
-    }}
-  >
-    {item.promiseText}
-  </Text>
-</View>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: "600",
+              color: colors.foreground,
+              lineHeight: 22,
+              paddingLeft: 10,
+           }}
+          >
+           ✨ {item.promiseText}
+          </Text>
           {isOpen && (
             <View
               style={{
