@@ -26,7 +26,7 @@ export default function TabLayout() {
           title: "履歴",
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
-              name="sprout"
+              name="sprout-outline"
               size={28}
               color={focused ? "#a99278" : "#c9c0b4"}
             />
