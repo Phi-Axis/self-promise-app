@@ -8,7 +8,7 @@ export default function HomeScreen() {
     <View
       style={{
         flex: 1,
-        backgroundColor: "#f5f3ee",
+        backgroundColor: "#F7F5F1",
         justifyContent: "center",
         alignItems: "center",
         paddingHorizontal: 24,
