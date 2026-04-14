@@ -1,6 +1,7 @@
 import "../../global.css";
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function TabLayout() {
   return (
@@ -24,8 +25,8 @@ export default function TabLayout() {
         options={{
           title: "履歴",
           tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name="folder"
+            <MaterialCommunityIcons
+              name="sprout"
               size={28}
               color={focused ? "#a99278" : "#c9c0b4"}
             />
