@@ -85,6 +85,7 @@ export default function HistoryScreen() {
               color: colors.foreground,
               lineHeight: 22,
               paddingLeft: 10,
+              textIndent:-6,
            }}
           >
            ✨ {item.promiseText}
