@@ -25,7 +25,7 @@ export default function TabLayout() {
           title: "履歴",
           tabBarIcon: ({ focused }) => (
             <Ionicons
-              name="list-outline"
+              name="ribbon-outline"
               size={28}
               color={focused ? "#a99278" : "#c9c0b4"}
             />
