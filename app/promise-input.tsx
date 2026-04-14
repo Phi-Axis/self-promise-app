@@ -52,8 +52,8 @@ export default function PromiseInputScreen() {
               editable={!isLoading}
               style={{
                 backgroundColor: colors.surface,
-                color: color: "#5F5F5F",
-            borderColor: error ? colors.error : "#E8D7C8",
+                color: "#5F5F5F",
+                borderColor: error ? colors.error : "#E8D7C8",
                 borderWidth: 1,
                 borderRadius: 16,
                 padding: 16,
