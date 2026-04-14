@@ -48,7 +48,7 @@ export default function SettingsScreen() {
         </View>
 
         {/* 削除ボタン */}
-        <View style={{ gap: 16 }}>
+        <View style={{ gap: 16, marginTop: 40 }}>
           <TouchableOpacity
             onPress={() => setShowConfirm(true)}
             disabled={isLoading || isResetting}
