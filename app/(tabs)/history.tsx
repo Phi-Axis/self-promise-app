@@ -118,7 +118,9 @@ export default function HistoryScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
 
-        <FlatList
+      <View style={{ height: 20 }} />
+      
+      <FlatList
           data={archivedPromises}
           keyExtractor={(item) => item.id}
           renderItem={renderItem}
