@@ -41,7 +41,7 @@ export default function SettingsScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <View style={{ flex: 1, paddingHorizontal: 24, paddingTop: 16 }}>
         {/* ヘッダー */}
-        <View style={{ marginBottom: 32 }}>
+        <View style={{ marginBottom: 20 }}>
           <Text style={{ fontSize: 24, fontWeight: "bold", color: colors.foreground }}>
             設定
           </Text>
@@ -64,7 +64,7 @@ export default function SettingsScreen() {
             {isResetting ? (
               <ActivityIndicator color="white" size="small" />
             ) : (
-              <Text style={{ fontSize: 16, color: "white", fontWeight: "600" }}>
+              <Text style={{ fontSize: 20, color: "white", fontWeight: "600" }}>
                 すべて削除
               </Text>
             )}
