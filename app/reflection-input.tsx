@@ -64,7 +64,7 @@ export default function ReflectionInputScreen() {
                 borderWidth: 1,
                 borderRadius: 16,
                 padding: 16,
-                fontSize: 16,
+                fontSize: 18,
                 fontFamily: "System",
                 textAlignVertical: "top",
                 outline: "none",
